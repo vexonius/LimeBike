@@ -1,4 +1,4 @@
-# project-lime
+# Project Lime
 
 ## Project setup
 ```

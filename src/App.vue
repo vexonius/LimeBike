@@ -23,8 +23,6 @@ export default {
 
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Heebo:400,800&display=swap');
-
-// Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 
 // Set your colors
@@ -33,7 +31,7 @@ $primary-invert: findColorInvert($primary);
 $twitter: #4099FF;
 $twitter-invert: findColorInvert($twitter);
 
-// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+// Setup $colors to use as bulma classes
 $colors: (
     "white": ($white, $black),
     "black": ($black, $white),

@@ -24,9 +24,9 @@
             <Linput placeholder="Email" />
             <Linput placeholder="Username" />
 
-            <Linput placeholder="Password" hide="true" />
+            <Linput placeholder="Password" :hide="true" />
 
-            <Linput placeholder="Repeat Password" hide="true" />
+            <Linput placeholder="Repeat Password" :hide="true" />
 
             <div class="columns has-margin-10">
               <div class="column">

@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "apexcharts": "^3.8.4",
+    "axios": "^0.19.0",
     "buefy": "^0.8.2",
     "bulma-divider": "^0.2.0",
     "core-js": "^2.6.5",

@@ -45,11 +45,6 @@
     padding: 10px;
 }
 
-.cont:focus-within {
-    border: 1px solid #3ddc84;
-    margin: 9px;
-}
-
 
 .material {
   display: inline-block;

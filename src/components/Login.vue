@@ -14,7 +14,7 @@
             </div>
 
             <Linput placeholder="username" />
-            <Linput placeholder="password" />
+            <Linput placeholder="password" :hide="true" />
             <div class="columns has-margin-10">
               <div class="column">
                 <b-button type="is-primary is-fullwidth is-medium" rounded>Log in</b-button>
@@ -36,13 +36,11 @@
 
 <script>
 import Linput from "./Linput.vue";
-import Navbar from "./Navbar.vue";
 
 export default {
   name: "Login",
   components: {
-    Linput,
-    Navbar
+    Linput
   },
   data() {
     return {};
@@ -50,8 +48,11 @@ export default {
   methods: {
     routeToRegister() {
       this.$router.push("/register");
-    }
-  }
+    },
+  },
+  created () {
+        this.$store.dispatch('loginUser', {name:"etino", password: "password"});
+  },
 };
 </script>
 
