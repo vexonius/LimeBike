@@ -6,7 +6,7 @@
           <div class="box">
             <div class="columns has-text-centered has-margin-10">
               <div class="column">
-                <b-message v-show="showErrorMessage" title="Error" type="is-danger">{{errorMessage}}</b-message>
+                <b-message v-show="errorMessage" title="Error" type="is-danger">{{errorMessage}}</b-message>
                 <figure class="image is-64x64 has-image-centered">
                   <img class="is" src="./../assets/bikelogo.png" />
                 </figure>
@@ -15,19 +15,19 @@
             </div>
             <div class="columns">
               <div class="column has-padding-left-10">
-                <Linput placeholder="First name" v-model="name" />
+                <Linput placeholder="First name" v-model="user.firstName" />
               </div>
               <div class="column has-padding-right-10">
-                <Linput placeholder="Last Name" v-model="surname" />
+                <Linput placeholder="Last Name" v-model="user.lastName" />
               </div>
             </div>
 
-            <Linput placeholder="Email" v-model="email" />
-            <Linput placeholder="Username" v-model="username" />
+            <Linput placeholder="Email" v-model="user.email" />
+            <Linput placeholder="Username" v-model="user.username" />
 
-            <Linput placeholder="Password" :hide="true" v-model="passwordorg" />
+            <Linput placeholder="Password" :hide="true" v-model="user.passwordorg" />
 
-            <Linput placeholder="Repeat Password" :hide="true" v-model="passwordrep" />
+            <Linput placeholder="Repeat Password" :hide="true" v-model="user.passwordrep" />
 
             <div class="columns has-margin-10">
               <div class="column">
@@ -35,7 +35,7 @@
                   type="is-primary is-fullwidth is-medium"
                   v-bind:disabled="loading"
                   v-bind:loading="loading"
-                  @click="checkInputs()"
+                  @click="registerUser()"
                   rounded
                 >Register</b-button>
               </div>
@@ -64,33 +64,31 @@ export default {
   },
   data() {
     return {
-      loading: false,
-      showErrorMessage: false
+      user: {
+        firstName: "",
+        lastName: "",
+        username: "",
+        email: "",
+        passwordorg: "",
+        passwordrep: ""
+      }
     };
   },
   methods: {
     routeToLogin() {
       this.$router.push("/login");
     },
-    checkInputs() {
-      if (
-        this.name &&
-        this.surname &&
-        this.email &&
-        this.username &&
-        this.passwordorg &&
-        this.passwordrep
-      ) {
-      } else {
-        this.errorMessage =
-          "Please check if you entered all input fields correctly";
-        this.showErrorMessage = true;
-      }
-    }
+
+    registerUser() {
+      this.$store.dispatch("registerUser", this.user);
+    },
   },
   computed: {
-    message() {
-      return this.message;
+    errorMessage() {
+      return this.$store.getters["getError"];
+    },
+    loading() {
+      return this.$store.getters["loading"];
     }
   }
 };

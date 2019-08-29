@@ -2,8 +2,8 @@
   <div id="app">
     <Navbar />
     <transition name="fade" mode="out-in">
-        <router-view></router-view>
-      </transition>
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -17,12 +17,17 @@ import Navbar from "./components/Navbar.vue";
 export default {
   components: {
     Navbar
+  },
+  watch: {
+    $route(to, from) {
+      this.$store.dispatch("clearError");
+    }
   }
-}
+};
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Heebo:400,800&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Heebo:400,800&display=swap");
 @import "~bulma/sass/utilities/_all";
 
 // Set your colors
@@ -31,15 +36,42 @@ $primary-invert: findColorInvert($primary);
 
 // Setup $colors to use as bulma classes
 $colors: (
-    "white": ($white, $black),
-    "black": ($black, $white),
-    "light": ($light, $light-invert),
-    "dark": ($dark, $dark-invert),
-    "primary": ($primary, $primary-invert),
-    "info": ($info, $info-invert),
-    "success": ($success, $success-invert),
-    "warning": ($warning, $warning-invert),
-    "danger": ($danger, $danger-invert),
+  "white": (
+    $white,
+    $black
+  ),
+  "black": (
+    $black,
+    $white
+  ),
+  "light": (
+    $light,
+    $light-invert
+  ),
+  "dark": (
+    $dark,
+    $dark-invert
+  ),
+  "primary": (
+    $primary,
+    $primary-invert
+  ),
+  "info": (
+    $info,
+    $info-invert
+  ),
+  "success": (
+    $success,
+    $success-invert
+  ),
+  "warning": (
+    $warning,
+    $warning-invert
+  ),
+  "danger": (
+    $danger,
+    $danger-invert
+  )
 );
 
 // Links
@@ -51,7 +83,6 @@ $link-focus-border: $primary;
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 
-
 body {
   margin: 0;
   padding: 0;
@@ -59,7 +90,7 @@ body {
 }
 
 #app {
-  font-family: 'Heebo', sans-serif;
+  font-family: "Heebo", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #ffffff;

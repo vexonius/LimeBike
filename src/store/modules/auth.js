@@ -3,7 +3,7 @@ import VueRouter from "./../../router";
 
 const state = {
   isLogged: false,
-  user: { name: 'test', password: 'secret'},
+  user: {},
   error: '',
   token: '',
   isLoading: false
@@ -31,42 +31,83 @@ const actions = {
   loginUser(context, user) {
     Repository.login(user)
       .then(userData => {
-		  console.log(userData);
+        console.log(userData);
         context.commit("loginUser", userData.data);
+        context.commit("setUserLoggedIn", true);
+        context.dispatch("setLoading", false);
         VueRouter.push("home");
       })
       .catch(err => {
-        console.log(err);
-        context.commit("pushError", err);
+        console.log(err.response);
+        context.dispatch("setLoading", false);
+        context.commit("pushError", err.response.data);
       });
   },
 
-  setLoading(context, val){
+  registerUser(context, user) {
+    if ((user && user.firstName && user.lastName && user.username && user.email && user.passwordorg && user.passwordrep)
+      && (user.passwordorg === user.passwordrep)) {
+      Repository.register(user)
+        .then(userData => {
+          console.log(userData);
+          context.commit("saveUserInfo", userData.data);
+          VueRouter.push("home");
+        })
+        .catch(err => {
+          console.log(err.response);
+          context.commit("pushError", err.response.data);
+        });
+    } else {
+
+    }
+  },
+
+
+  setLoading(context, val) {
     context.commit("setLoading", val);
   },
 
-  checkInputs({dispatch, commit}, user){
-    if(user.name && user.password){
+  checkInputs({ dispatch, commit }, user) {
+    if (user.name && user.password) {
       dispatch("setLoading", true);
       dispatch("loginUser", user);
     } else {
       dispatch("setLoading", false);
-      commit("pushError", {msg: "Please check if you entered all the required credentials"})
+      commit("pushError", { message: "Please check if you entered all the required credentials" });
     }
+  },
+
+  clearError(context) {
+    context.commit("clearErrorMessage");
   }
+
 };
 
 const mutations = {
   loginUser(state, data) {
-    state.token = data.token
+    //fix this
+    //
+    state.token = data.token;
+  },
+
+  saveUserInfo(state, info) {
+
   },
 
   pushError(state, err) {
-    state.error = err.msg;
+    state.error = err.message;
   },
 
-  setLoading(state, val){
+  setLoading(state, val) {
     state.isLoading = val;
+  },
+
+  setUserLoggedIn(state, val) {
+    state.isLogged = val;
+  },
+
+  clearErrorMessage(state) {
+    state.error = '';
   }
 
 };

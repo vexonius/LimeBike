@@ -62,12 +62,6 @@ export default {
     checkInputs() {
       this.$store.dispatch("checkInputs", { name: this.username, password: this.pwd });
     },
-    signInUser() {
-      this.$store.dispatch("loginUser", {
-        name: this.username,
-        password: this.pwd
-      });
-    }
   },
   computed: {
     errorMessage() {
