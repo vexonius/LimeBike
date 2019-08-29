@@ -32,7 +32,7 @@ const actions = {
     Repository.login(user)
       .then(userData => {
         console.log(userData);
-        context.commit("loginUser", userData.data);
+        context.commit("saveToken", userData.data);
         context.commit("setUserLoggedIn", true);
         context.dispatch("setLoading", false);
         VueRouter.push("home");
@@ -45,20 +45,21 @@ const actions = {
   },
 
   registerUser(context, user) {
-    if ((user && user.firstName && user.lastName && user.username && user.email && user.passwordorg && user.passwordrep)
-      && (user.passwordorg === user.passwordrep)) {
+    if ((user && user.firstName && user.lastName && user.username && user.email && user.password && user.passwordrep)
+      && (user.password === user.passwordrep)) {
       Repository.register(user)
         .then(userData => {
           console.log(userData);
           context.commit("saveUserInfo", userData.data);
-          VueRouter.push("home");
+          VueRouter.push("login");
         })
         .catch(err => {
           console.log(err.response);
           context.commit("pushError", err.response.data);
         });
     } else {
-
+      context.dispatch("setLoading", false);
+      context.commit("pushError", { message: "Please check if you entered all the required credentials" });
     }
   },
 
@@ -84,14 +85,12 @@ const actions = {
 };
 
 const mutations = {
-  loginUser(state, data) {
-    //fix this
-    //
+  saveToken(state, data) {
     state.token = data.token;
   },
 
   saveUserInfo(state, info) {
-
+    state.user = info.user
   },
 
   pushError(state, err) {

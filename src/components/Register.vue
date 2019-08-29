@@ -25,7 +25,7 @@
             <Linput placeholder="Email" v-model="user.email" />
             <Linput placeholder="Username" v-model="user.username" />
 
-            <Linput placeholder="Password" :hide="true" v-model="user.passwordorg" />
+            <Linput placeholder="Password" :hide="true" v-model="user.password" />
 
             <Linput placeholder="Repeat Password" :hide="true" v-model="user.passwordrep" />
 
@@ -69,7 +69,7 @@ export default {
         lastName: "",
         username: "",
         email: "",
-        passwordorg: "",
+        password: "",
         passwordrep: ""
       }
     };

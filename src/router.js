@@ -30,6 +30,10 @@ export default new VueRouter({
       path: "/home",
       name: "home",
       component: Home
+    },
+    {
+      path: '*',
+      redirect: "/home"
     }
   ]
 });
