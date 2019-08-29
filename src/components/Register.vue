@@ -6,6 +6,7 @@
           <div class="box">
             <div class="columns has-text-centered has-margin-10">
               <div class="column">
+                <b-message v-show="showErrorMessage" title="Error" type="is-danger">{{errorMessage}}</b-message>
                 <figure class="image is-64x64 has-image-centered">
                   <img class="is" src="./../assets/bikelogo.png" />
                 </figure>
@@ -14,28 +15,37 @@
             </div>
             <div class="columns">
               <div class="column has-padding-left-10">
-                <Linput placeholder="First name" />
+                <Linput placeholder="First name" v-model="name" />
               </div>
               <div class="column has-padding-right-10">
-                <Linput placeholder="Last Name" />
+                <Linput placeholder="Last Name" v-model="surname" />
               </div>
             </div>
 
-            <Linput placeholder="Email" />
-            <Linput placeholder="Username" />
+            <Linput placeholder="Email" v-model="email" />
+            <Linput placeholder="Username" v-model="username" />
 
-            <Linput placeholder="Password" :hide="true" />
+            <Linput placeholder="Password" :hide="true" v-model="passwordorg" />
 
-            <Linput placeholder="Repeat Password" :hide="true" />
+            <Linput placeholder="Repeat Password" :hide="true" v-model="passwordrep" />
 
             <div class="columns has-margin-10">
               <div class="column">
-                <b-button type="is-primary is-fullwidth is-medium" rounded>Register</b-button>
+                <b-button
+                  type="is-primary is-fullwidth is-medium"
+                  v-bind:disabled="loading"
+                  v-bind:loading="loading"
+                  @click="checkInputs()"
+                  rounded
+                >Register</b-button>
               </div>
             </div>
             <div class="is-divider" data-content="OR"></div>
-            <div class="column has-text-centered">
-              <p class="subtitle is-6" @click="routeToLogin()">Already have an account? <strong>Log in</strong></p>
+            <div class="column has-text-centered clickable">
+              <p class="subtitle is-6" @click="routeToLogin()">
+                Already have an account?
+                <strong>Log in</strong>
+              </p>
             </div>
           </div>
         </div>
@@ -47,20 +57,42 @@
 <script>
 import Linput from "./Linput.vue";
 
-
 export default {
   name: "Register",
   components: {
     Linput
   },
   data() {
-    return {};
+    return {
+      loading: false,
+      showErrorMessage: false
+    };
   },
   methods: {
     routeToLogin() {
-      this.$router.push('/login');
+      this.$router.push("/login");
+    },
+    checkInputs() {
+      if (
+        this.name &&
+        this.surname &&
+        this.email &&
+        this.username &&
+        this.passwordorg &&
+        this.passwordrep
+      ) {
+      } else {
+        this.errorMessage =
+          "Please check if you entered all input fields correctly";
+        this.showErrorMessage = true;
+      }
     }
   },
+  computed: {
+    message() {
+      return this.message;
+    }
+  }
 };
 </script>
 
@@ -77,12 +109,12 @@ export default {
   border: 0;
 }
 
-.has-padding-left-10{
+.has-padding-left-10 {
   padding: 0;
   padding-left: 10px;
 }
 
-.has-padding-right-10{
+.has-padding-right-10 {
   padding: 0;
   padding-right: 10px;
 }
@@ -102,6 +134,10 @@ export default {
 .has-image-centered {
   margin-left: auto;
   margin-right: auto;
+}
+
+.clickable {
+  cursor: pointer;
 }
 
 strong {

@@ -28,8 +28,6 @@ export default {
 // Set your colors
 $primary: #3ddc84;
 $primary-invert: findColorInvert($primary);
-$twitter: #4099FF;
-$twitter-invert: findColorInvert($twitter);
 
 // Setup $colors to use as bulma classes
 $colors: (
@@ -42,7 +40,6 @@ $colors: (
     "success": ($success, $success-invert),
     "warning": ($warning, $warning-invert),
     "danger": ($danger, $danger-invert),
-    "twitter": ($twitter, $twitter-invert)
 );
 
 // Links

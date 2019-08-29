@@ -1,6 +1,6 @@
 <template>
     <div class="cont">
-        <input class="material" :placeholder="placeholder" :type="passwordType()"></input>
+        <input class="material" :placeholder="placeholder" :type="passwordType()" :value="value" @input="$emit('input', $event.target.value)"></input>
     </div>
 </template>
 
@@ -19,7 +19,8 @@
         },
         data() {
             return {
-                data: "data"
+                data: "data",
+                value: ''
             }
         },
         methods: {

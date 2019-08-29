@@ -1,15 +1,19 @@
 <template>
-  <div class="home">
+  <div class="container is-fullhd">
+    <h1 class="title">Welcome back user</h1>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
+ import BikeItem from './../components/BikeItem.vue';
 
 
 export default {
   name: "home",
   components: {
+    BikeItem
   }
 };
 </script>
+
+

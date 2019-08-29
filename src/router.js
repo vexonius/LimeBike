@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Landing from "@/components/Landing.vue";
 import Register from "@/components/Register.vue";
 import Login from "@/components/Login.vue";
+import Home from "@/views/Home.vue";
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,11 @@ export default new VueRouter({
       path: "/login",
       name: "login",
       component: Login
+    },
+    {
+      path: "/home",
+      name: "home",
+      component: Home
     }
   ]
 });
