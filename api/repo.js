@@ -11,5 +11,8 @@ export default {
   },
   protected() {
     return axios.post(`${BASE_URL}/protected`);
+  },
+  fetchAllProducts(){
+    return axios.get(`${BASE_URL}/products`);
   }
 };

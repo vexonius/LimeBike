@@ -35,6 +35,7 @@ const actions = {
         context.commit("saveToken", userData.data);
         context.commit("setUserLoggedIn", true);
         context.dispatch("setLoading", false);
+        context.commit("saveUserInfo", userData.data);
         VueRouter.push("home");
       })
       .catch(err => {
@@ -50,7 +51,7 @@ const actions = {
       Repository.register(user)
         .then(userData => {
           console.log(userData);
-          context.commit("saveUserInfo", userData.data);
+          context.commit("saveUserInfo", userData.data.user);
           VueRouter.push("login");
         })
         .catch(err => {
@@ -90,7 +91,7 @@ const mutations = {
   },
 
   saveUserInfo(state, info) {
-    state.user = info.user
+    state.user = {username: info.username};
   },
 
   pushError(state, err) {

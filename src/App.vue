@@ -27,12 +27,19 @@ export default {
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css?family=Heebo:400,800&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Heebo:400,500,800&display=swap");
 @import "~bulma/sass/utilities/_all";
 
 // Set your colors
 $primary: #3ddc84;
 $primary-invert: findColorInvert($primary);
+
+// tiles
+$title-family: false;
+$body-family: "Heebo", sans-serif;
+
+// Custom buttons
+$button-border-width: 2px;
 
 // Setup $colors to use as bulma classes
 $colors: (

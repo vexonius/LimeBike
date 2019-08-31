@@ -7,7 +7,9 @@ import store from "./store/store";
 
 Vue.use(Vuex);
 
-Vue.use(Buefy);
+Vue.use(Buefy, {
+  defaultIconPack: 'fas'
+});
 
 Vue.config.productionTip = false;
 
