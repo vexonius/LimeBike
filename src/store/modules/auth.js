@@ -64,6 +64,12 @@ const actions = {
     }
   },
 
+  logout(context) {
+    context.commit("setUserLoggedIn", false);
+    context.commit("saveToken", { token: '' });
+    context.commit("saveUserInfo", { username: '' });
+    VueRouter.push("/");
+  },
 
   setLoading(context, val) {
     context.commit("setLoading", val);
@@ -91,7 +97,7 @@ const mutations = {
   },
 
   saveUserInfo(state, info) {
-    state.user = {username: info.username};
+    state.user = { username: info.username };
   },
 
   pushError(state, err) {

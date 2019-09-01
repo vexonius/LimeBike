@@ -3,17 +3,12 @@
     <div class="columns">
       <div class="column is-one-quarter">
         <div class="card dark fixed">
-          <div class="card-content">
+          <div class="card-content has-padding-40">
             <p class="subtitle light">Filter by</p>
             <div class="field">
               <div v-for="filter in filters" :key="filter.id" class="field">
                 <b-checkbox class="light" v-model="filter.value">{{ filter.name }}</b-checkbox>
               </div>
-            </div>
-
-            <p class="subtitle light">Sort by</p>
-            <div v-for="n in 3" :key="n" class="field">
-              <b-radio class="light" v-model="radio" name="name" native-value="Jack">Jack</b-radio>
             </div>
           </div>
         </div>
@@ -26,10 +21,7 @@
             :key="product.serialNumber"
           >
             <BikeItem
-              :name="product.name"
-              :photoUrl="product.photoUrl"
-              :price="product.price"
-              :category="product.category"
+              :bike="product"
             />
           </div>
         </div>
@@ -92,6 +84,11 @@ export default {
 
 .light {
   color: #eeeeee;
+}
+
+.has-padding-40 {
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 </style>
 

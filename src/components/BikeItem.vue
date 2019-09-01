@@ -1,15 +1,15 @@
 <template>
   <div class="card is-shadowless card-style">
-    <div class="card-image" @click="imageModal(photoUrl)">
+    <div class="card-image" @click="imageModal(bike.photoUrl)">
       <figure class="image is-16by10">
-        <img class="img-style" :src="photoUrl" alt="Placeholder image" />
+        <img class="img-style" :src="bike.photoUrl" alt="Placeholder image" />
       </figure>
     </div>
     <div class="card-content">
-      <span class="tag is-light has-margin-10">{{category}}</span>
-      <p class="title is-5">{{name}}</p>
-      <b-button rounded outlined class="is-primary bold-text is-pulled-right">Add to cart</b-button>
-      <p class="title is-primary is-4">${{price}}/day</p>
+      <span class="tag is-light has-margin-10">{{bike.category}}</span>
+      <p class="title is-5">{{bike.name}}</p>
+      <b-button rounded outlined class="is-primary bold-text is-pulled-right" @click="addToBasket()">Add to cart</b-button>
+      <p class="title is-primary is-4">${{bike.price}}/day</p>
     </div>
   </div>
 </template>
@@ -22,22 +22,10 @@ export default {
     };
   },
   props: {
-    photoUrl: {
-      type: String,
-      default: ""
+    bike: {
+      type: Object,
+      default: null
     },
-    name: {
-      type: String,
-      default: ""
-    },
-    price: {
-      type: Number,
-      default: 0
-    },
-    category: {
-      type: String,
-      default: "BASIC"
-    }
   },
   methods: {
     imageModal(url) {
@@ -46,6 +34,9 @@ export default {
             <img src="${url}">
           </p>`
       );
+    },
+    addToBasket(){
+      this.$store.dispatch("addItemToCart", this.bike);
     }
   }
 };

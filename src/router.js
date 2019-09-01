@@ -3,7 +3,9 @@ import VueRouter from "vue-router";
 import Landing from "@/components/Landing.vue";
 import Register from "@/components/Register.vue";
 import Login from "@/components/Login.vue";
+import Checkout from "@/components/Checkout.vue";
 import Home from "@/views/Home.vue";
+import Receipts from '@/views/Receipts.vue';
 
 Vue.use(VueRouter);
 
@@ -30,6 +32,16 @@ export default new VueRouter({
       path: "/home",
       name: "home",
       component: Home
+    },
+    {
+      path: '/receipts',
+      name: 'receipts',
+      component: Receipts
+    },
+    {
+      path: '/checkout',
+      name: 'checkout',
+      component: Checkout
     },
     {
       path: '*',
