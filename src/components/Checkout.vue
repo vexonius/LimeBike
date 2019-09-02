@@ -98,10 +98,6 @@ export default {
       nextStep: false
     };
   },
-  created() {
-    let token = this.$store.dispatch("getAuthToken");
-    console.log(this.transactionData);
-  },
   methods: {
     fakeLoading() {
       this.loading = true;
@@ -110,6 +106,7 @@ export default {
       setTimeout(() => {
         this.loading = false;
         this.disabled = false;
+        console.log(this.transactionData);
         this.$store.dispatch("createNewTransaction", this.user.id, this.transactionData);
         this.$router.push("/receipts");
       }, 500);
