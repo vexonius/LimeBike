@@ -2,6 +2,12 @@ import Repository from "./../../../api/repo";
 
 const state = {
     products: [],
+    filters: [
+        { name: "CASUAL", id: 1, value: false },
+        { name: "BASIC", id: 2, value: false },
+        { name: "SPORT", id: 3, value: false },
+        { name: "PROFESSIONAL", id: 4, value: false }
+    ],
     filtered: false
 }
 
@@ -13,6 +19,17 @@ const getters = {
         return state.products.filter((product) => {
             return product.category === 'BASIC';
         })
+    },
+    isFilteringOn(state) {
+        let active = ths.state.filters.filter(item => {
+            return item.value == true;
+        });
+
+        if (active.length == 0) return false;
+        return true;
+    },
+    getFilters(state){
+        return state.filters;
     }
 }
 
@@ -34,7 +51,7 @@ const mutations = {
 
 export default {
     state,
-    getters, 
-    mutations, 
-    actions, 
+    getters,
+    mutations,
+    actions,
 };

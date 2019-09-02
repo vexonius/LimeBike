@@ -39,17 +39,12 @@ export default {
   },
   data() {
     return {
-      filters: [
-        { name: "CASUAL", id: 1, value: false },
-        { name: "BASIC", id: 2, value: false },
-        { name: "SPORT", id: 3, value: false },
-        { name: "PROFESSIONAL", id: 4, value: false }
-      ]
+      
     };
   },
   methods: {
     isFilteringOn() {
-      return false; // this.filters.map(filter => filter.value == true);
+      return false;
     }
   },
   computed: {
@@ -62,6 +57,9 @@ export default {
       if (this.isFilteringOn()) return true;
 
       return false;
+    },
+    filters(){
+      return this.$store.getters["getFilters"];
     }
   },
   mounted() {
