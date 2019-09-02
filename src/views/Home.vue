@@ -18,8 +18,7 @@
           <div
             class="column is-12-mobile is-6-tablet is-4-widescreen is-6-desktop"
             v-for="product in products"
-            :key="product.serialNumber"
-          >
+            :key="product.serialNumber">
             <BikeItem
               :bike="product"
             />

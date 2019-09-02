@@ -52,7 +52,7 @@
             </div>
             <div class="navbar-item" v-show="isUserLogged">
               <div class="dropdown is-hoverable is-right">
-                <div class="dropdown-trigger dropdown-padding ">
+                <div class="dropdown-trigger dropdown-padding">
                   <button
                     class="button is-text"
                     aria-haspopup="true"
@@ -70,7 +70,12 @@
                       class="dropdown-item"
                       v-show="!itemCount"
                     >Overhere will appear all items you added to cart</a>
-                    <CartItem v-for="(item, index) in cartItems" :key="item.id" :product="item" :index="index"/>
+                    <CartItem
+                      v-for="(item, index) in cartItems"
+                      :key="item.id"
+                      :product="item"
+                      :index="index"
+                    />
 
                     <a
                       class="dropdown-item title is-5 has-text-right"
