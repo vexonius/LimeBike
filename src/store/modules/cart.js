@@ -28,6 +28,24 @@ const getters = {
         }, 0);
 
         return parseFloat(total).toFixed(2);
+    },
+
+    getTransactionData(state, getters){
+        let data = {
+            total: getters.getTotal,
+            userId: getters.getUser.id,
+            items: []
+        }
+
+         let itms = state.items.map(itm => {
+            let newItem = {amount: itm.amount, bicycleId: itm.item.serialNumber}
+            return newItem;
+         })
+
+         data.items = itms;
+         console.log(data);
+
+         return data;
     }
 }
 

@@ -14,5 +14,14 @@ export default {
   },
   fetchAllProducts(){
     return axios.get(`${BASE_URL}/products`);
+  },
+  updateUserInfo(data, config){
+    return axios.post(`${BASE_URL}/users/${id}/info`, data, config);
+  },
+  getAllUserTransactions(id, config){
+    return axios.get(`${BASE_URL}/users/${id}/transactions`, config);
+  },
+  createNewTransaction(id, data, config){
+    return axios.post(`${BASE_URL}/users/${id}/transactions`, data, config);
   }
 };

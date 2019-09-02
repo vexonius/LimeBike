@@ -44,10 +44,11 @@ module.exports = {
 
     async createNewTransaction(req, res) {
         const transaction = req.body;
+        let total = parseFloat(transaction.total).toFixed(2);
 
-        // znam da je malo neuredan kod, ali bulkCreate nije radio za mene
+        // znam da je malo neuredan kod, ali bulkCreate nije radia za mene
 
-        db.transaction.create({ total: transaction.total, userId: transaction.userId })
+        db.transaction.create({ total: total, userId: transaction.userId })
             .then(t => {
                 console.log(t);
                 const items = transaction.items.map(item => {
@@ -58,11 +59,11 @@ module.exports = {
                     .then(res.status(200).json({ msg: "Data inserted in db" }))
                     .catch(err => {
                         console.error(err);
-                        res.status(404).json({ msg: 'Something went wrong' });
+                        res.status(400).json({ msg: 'Something went wrong' });
                     })
             }).catch(err => {
-                console.error(err)
-                res.status(404).json({ msg: 'Something went wrong' })
+                console.error(err);
+                res.status(400).json({ msg: 'Something went wrong' })
             });
 
 

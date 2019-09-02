@@ -22,19 +22,19 @@
                   </div>
                 </div>
               </b-step-item>
-              <b-step-item label="Additional info" :clickable="true">
+              <b-step-item label="Additional info" :clickable="true" :is-active="nextStep">
                 <div class="section">
-                  <Linput v-model="address" placeholder="Address" />
+                  <Linput v-model="entered.address" placeholder="Address" />
                   <div class="columns">
                     <div class="column">
-                      <Linput v-model="cityNumber" placeholder="City number" />
+                      <Linput v-model="entered.cityNumber" placeholder="City number" />
                     </div>
                     <div class="column">
-                      <Linput v-model="city" placeholder="City" />
+                      <Linput v-model="entered.city" placeholder="City" />
                     </div>
                   </div>
 
-                  <Linput v-model="country" placeholder="Country" />
+                  <Linput v-model="entered.country" placeholder="Country" />
                 </div>
               </b-step-item>
 
@@ -42,11 +42,16 @@
                 <div class="columns">
                   <div class="column section">
                     <p class="title is-4 is-dark is-spaced">Please double check entered information</p>
-                    <b-notification class="has-text-dark" :closable="false" :active.sync="isActive">
-                      <p class="subtitle is-5">{{user.firstName}} {{user.lastName}}
-                      <br />{{address}}
-                      <br />{{cityNumber}} {{city}}
-                      <br />{{country}} </p>
+                    <b-notification class="has-text-dark" :closable="false">
+                      <p class="subtitle is-5">
+                        {{user.firstName}} {{user.lastName}}
+                        <br />
+                        {{entered.address}}
+                        <br />
+                        {{entered.cityNumber}} {{entered.city}}
+                        <br />
+                        {{entered.country}}
+                      </p>
                     </b-notification>
                     <h1 class="title is-4">Payment option</h1>
                     <b-button
@@ -81,13 +86,21 @@ export default {
   },
   data() {
     return {
-      address: "",
-      city: "",
-      cityNumber: "",
-      country: "",
+      entered: {
+        city: '',
+        address: '',
+        cityNumber: '',
+        country: ''
+      },
       loading: false,
-      disabled: false
+      disabled: false,
+      activeStep: 0,
+      nextStep: false
     };
+  },
+  created() {
+    let token = this.$store.dispatch("getAuthToken");
+    console.log(this.transactionData);
   },
   methods: {
     fakeLoading() {
@@ -97,12 +110,10 @@ export default {
       setTimeout(() => {
         this.loading = false;
         this.disabled = false;
-        routeToOrderDetails();
+        this.$store.dispatch("createNewTransaction", this.user.id, this.transactionData);
+        this.$router.push("/receipts");
       }, 500);
     },
-    routeToOrderDetails(){
-      this.$router.push("/orderDetails");
-    }
   },
   computed: {
     cartItems() {
@@ -113,6 +124,9 @@ export default {
     },
     user() {
       return this.$store.getters["getUser"];
+    },
+    transactionData(){
+      return this.$store.getters["getTransactionData"];
     }
   }
 };

@@ -14,10 +14,10 @@ module.exports = {
 
             Bcrypt.compare(password, user.password).then(rez => {
                 if (rez) {
-
+                    user.password = undefined;
                     let payload = { id: user.id };
                     let token = jwtUtils.jwt.sign(payload, jwtUtils.jwtOptions.secretOrKey);
-                    res.json({ msg: 'ok', token: token, id: user.id, username: user.username });
+                    res.json({ msg: 'ok', token: token, user: user });
 
                 } else {
                     res.status(401).json({ message: 'Password is incorrect' });

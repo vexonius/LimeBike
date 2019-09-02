@@ -34,7 +34,7 @@ const actions = {
         context.dispatch("saveToken", response.data.token);
         context.commit("setUserLoggedIn", true);
         context.dispatch("setLoading", false);
-        context.commit("saveUserInfo", response.data);
+        context.commit("saveUserInfo", response.data.user);
         router.push("home");
       })
       .catch(err => {
@@ -44,8 +44,8 @@ const actions = {
       });
   },
 
-  saveToken(context, token){
-    localStorage.setItem('jwt', token)
+  saveToken(context, token) {
+    localStorage.setItem('jwt', token);
   },
 
   registerUser(context, user) {
@@ -93,19 +93,34 @@ const actions = {
     context.commit("clearErrorMessage");
   },
 
-  updateUserInfo(){
+  updateUserInfo() {
 
   },
 
-  getUserInfo(){
-    
+  getAuthToken(){
+    let token = localStorage.getItem('jwt');
+    let config = {
+      headers: {'Authorization': "Bearer " + token}
+    };
+
+    console.log(config);
+
+    return config;
+  },
+
+  createNewTransaction(context, id, data){
+    context.dispatch("getAuthToken").then(config => {
+      Repository.createNewTransaction(id, data, config)
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
+    })
   }
 
 };
 
 const mutations = {
   saveUserInfo(state, info) {
-    state.user = { username: info.username };
+    state.user = info;
   },
 
   pushError(state, err) {
