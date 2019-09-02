@@ -17,7 +17,7 @@
                       :product="item"
                       :index="index"
                     />
-                    <p class="title is-5 has-text-right has-margin-10">${{total}}</p>
+                    <p class="title is-4 has-text-right has-margin-10">${{total}}</p>
                     <div class="divider"></div>
                   </div>
                 </div>

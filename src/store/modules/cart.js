@@ -13,21 +13,21 @@ const getters = {
     getItemsCount(state){
         if(state.items.length == 0) return 0;
 
-        let num = state.items.reduce((count, amount) => {
-            return count + parseInt(amount.amount);
+        let num = state.items.reduce((count, item) => {
+            return count + parseInt(item.amount);
         }, 0);
 
         return num;
     },
 
     getTotal(state){
-        if(state.items.length == 0) return 0;
+        if(state.items.length == 0) return parseFloat(0).toFixed(2);
 
-        let total = state.items.reduce((count, amount) => {
-            return count + parseInt(amount.amount) * parseFloat(amount.item.price);
+        let total = state.items.reduce((count, item) => {
+            return count + item.amount * parseFloat(item.item.price);
         }, 0);
 
-        return total;
+        return parseFloat(total).toFixed(2);
     }
 }
 

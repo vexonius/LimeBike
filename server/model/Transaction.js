@@ -8,15 +8,13 @@ module.exports = (sequelize) => {
             defaultValue: Sequelize.UUIDV4,
             primaryKey: true
         },
-        date: {
-            type: Sequelize.DATE,
-            allowNull: false
-        },
         total: {
-            type: Sequelize.DOUBLE,
+            type: Sequelize.DECIMAL(10, 2),
             allowNull: false
         },
-
+        userId: {
+            type: Sequelize.UUID,
+        }
     },
         {
             modelName: 'transaction',
@@ -24,8 +22,8 @@ module.exports = (sequelize) => {
         });
 
     Transaction.associate = function (models) {
-        Transaction.hasMany(models.TransactionItem, { as: 'items' });
-        Transaction.belongsTo(models.User, { foreignKey: 'userId', as: 'user' });
+        Transaction.hasMany(models.transactionItem, { as: 'items' });
+        Transaction.belongsTo(models.user, { foreignKey: 'userId', as: 'user' });
     };
 
     return Transaction;

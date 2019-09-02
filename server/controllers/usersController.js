@@ -24,11 +24,11 @@ module.exports = {
         });
     },
 
-    async getUserTransactions(req, res){
+    async getAllUserTransactions(req, res){
 
     },
 
-    async getUserTransactions(req, res){
+    async getUserTransaction(req, res){
 
     },
 
