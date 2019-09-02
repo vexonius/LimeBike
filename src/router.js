@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
+import $store from './store/store'
 import Landing from "@/components/Landing.vue";
 import Register from "@/components/Register.vue";
 import Login from "@/components/Login.vue";
@@ -9,7 +10,7 @@ import Receipts from '@/views/Receipts.vue';
 
 Vue.use(VueRouter);
 
-export default new VueRouter({
+let router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
@@ -31,17 +32,26 @@ export default new VueRouter({
     {
       path: "/home",
       name: "home",
-      component: Home
+      component: Home,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/receipts',
       name: 'receipts',
-      component: Receipts
+      component: Receipts,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '/checkout',
       name: 'checkout',
-      component: Checkout
+      component: Checkout,
+      meta: {
+        requiresAuth: true
+      }
     },
     {
       path: '*',
@@ -49,3 +59,16 @@ export default new VueRouter({
     }
   ]
 });
+
+
+
+router.beforeEach((to, from, next) => {
+  let logged = $store.getters["isUserLogged"];
+  let isAuthRoute = to.matched.some(item => item.meta.requiresAuth)
+
+  if (isAuthRoute && logged) return next();
+  if (isAuthRoute) return next({ name: 'login' })
+  next()
+});
+
+export default router;

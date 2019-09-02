@@ -1,11 +1,10 @@
 import Repository from "./../../../api/repo";
-import VueRouter from "./../../router";
+import router from "./../../router";
 
 const state = {
   isLogged: false,
   user: {},
   error: '',
-  token: '',
   isLoading: false
 };
 
@@ -30,13 +29,13 @@ const getters = {
 const actions = {
   loginUser(context, user) {
     Repository.login(user)
-      .then(userData => {
-        console.log(userData);
-        context.commit("saveToken", userData.data);
+      .then(response => {
+        console.log(response);
+        context.dispatch("saveToken", response.data.token);
         context.commit("setUserLoggedIn", true);
         context.dispatch("setLoading", false);
-        context.commit("saveUserInfo", userData.data);
-        VueRouter.push("home");
+        context.commit("saveUserInfo", response.data);
+        router.push("home");
       })
       .catch(err => {
         console.log(err.response);
@@ -45,14 +44,18 @@ const actions = {
       });
   },
 
+  saveToken(context, token){
+    localStorage.setItem('jwt', token)
+  },
+
   registerUser(context, user) {
     if ((user && user.firstName && user.lastName && user.username && user.email && user.password && user.passwordrep)
       && (user.password === user.passwordrep)) {
       Repository.register(user)
-        .then(userData => {
-          console.log(userData);
-          context.commit("saveUserInfo", userData.data.user);
-          VueRouter.push("login");
+        .then(response => {
+          console.log(response);
+          context.commit("saveUserInfo", response.data.user);
+          router.push("login");
         })
         .catch(err => {
           console.log(err.response);
@@ -66,9 +69,9 @@ const actions = {
 
   logout(context) {
     context.commit("setUserLoggedIn", false);
-    context.commit("saveToken", { token: '' });
-    context.commit("saveUserInfo", { username: '' });
-    VueRouter.push("/");
+    context.commit("saveUserInfo", null);
+    context.dispatch.saveToken(null);
+    router.push("/");
   },
 
   setLoading(context, val) {
@@ -92,10 +95,6 @@ const actions = {
 };
 
 const mutations = {
-  saveToken(state, data) {
-    state.token = data.token;
-  },
-
   saveUserInfo(state, info) {
     state.user = { username: info.username };
   },

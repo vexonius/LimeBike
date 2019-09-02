@@ -52,7 +52,7 @@ $primary: #3ddc84;
 }
 
 .negative-margin{
-  margin-top: -40px;
+  margin-top: 0;
 }
 
 </style>

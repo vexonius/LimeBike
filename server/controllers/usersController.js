@@ -24,16 +24,47 @@ module.exports = {
         });
     },
 
-    async getAllUserTransactions(req, res){
-
+    async getAllUserTransactions(req, res) {
+        db.transaction.findAll({ where: { userId: req.params.id }, include: ['items'] }).then((data) => {
+            res.status(200).json(data);
+        }).catch(err => {
+            console.error(err);
+            res.status(404).json({ msg: 'Something went wrong' })
+        });
     },
 
-    async getUserTransaction(req, res){
-
+    async getUserTransaction(req, res) {
+        db.transaction.findOne({ where: { id: req.params.id }, include: ['items'] }).then((data) => {
+            res.status(200).json(data);
+        }).catch(err => {
+            console.error(err);
+            res.status(404).json({ msg: 'Something went wrong' })
+        });
     },
 
-    async createNewTransaction(req, res){
+    async createNewTransaction(req, res) {
+        const transaction = req.body;
+
+        // znam da je malo neuredan kod, ali bulkCreate nije radio za mene
+
+        db.transaction.create({ total: transaction.total, userId: transaction.userId })
+            .then(t => {
+                console.log(t);
+                const items = transaction.items.map(item => {
+                item.transactionId = t.id;
+                    return item;
+                });
+                db.transactionItem.bulkCreate(items)
+                    .then(res.status(200).json({ msg: "Data inserted in db" }))
+                    .catch(err => {
+                        console.error(err);
+                        res.status(404).json({ msg: 'Something went wrong' });
+                    })
+            }).catch(err => {
+                console.error(err)
+                res.status(404).json({ msg: 'Something went wrong' })
+            });
+
 
     }
-
 };

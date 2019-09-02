@@ -1,11 +1,14 @@
-# Project Lime
+# Project Lime - EE Summer Camp 2019 Project
 
-## Project setup
+Zadatak za EE Summer Camp 2019. 
+Frontend je u /src, a backend u /server folderu. Korištene tehnologije: Vuejs (Vuex, Router, Buefy), Express, Sequelize i PostgreSQL.
+
+## Project setup and dependency installation
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and hot-reloads for development (FRONTEND)
 ```
 npm run serve
 ```
@@ -24,6 +27,3 @@ npm run test
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

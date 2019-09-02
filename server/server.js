@@ -32,10 +32,8 @@ app.get('/products', controller.getAllProducts);
  app.post('/users/:id/info', passport.authenticate('jwt', { session: false }), usersController.updateUserInfo);
 
 
-// app.get('/users/:id/transactions', passport.authenticate('jwt', { session: false }), controller.getAllUserTransactions);
-
-// app.get('/users/:id/transactions/:transactionId', passport.authenticate('jwt', { session: false }), controller.getUserTransaction);
-
-// app.post('/users/:id/transactions', passport.authenticate('jwt', { session: false }), controller.createNewTransaction);
+app.get('/users/:id/transactions', passport.authenticate('jwt', { session: false }), usersController.getAllUserTransactions);
+app.get('/users/:id/transactions/:transactionId', passport.authenticate('jwt', { session: false }), usersController.getUserTransaction);
+app.post('/users/:id/transactions', passport.authenticate('jwt', { session: false }), usersController.createNewTransaction);
 
 app.listen(PORT, () => console.log(`Started listening on port ${PORT}`));

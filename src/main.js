@@ -6,6 +6,7 @@ import Vuex from 'vuex';
 import store from "./store/store";
 
 Vue.use(Vuex);
+Vue.use(router);
 
 Vue.use(Buefy, {
   defaultIconPack: 'fas'
