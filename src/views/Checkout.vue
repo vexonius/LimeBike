@@ -23,7 +23,7 @@
                 </div>
               </b-step-item>
               <b-step-item label="Additional info" :clickable="true" :is-active="nextStep">
-                <div class="section">
+                <div class="section max-width-800">
                   <Linput v-model="entered.address" placeholder="Address" />
                   <div class="columns">
                     <div class="column">
@@ -39,29 +39,33 @@
               </b-step-item>
 
               <b-step-item label="Verify" :clickable="true">
-                <div class="columns">
-                  <div class="column section">
-                    <p class="title is-4 is-dark is-spaced">Please double check entered information</p>
-                    <b-notification class="has-text-dark" :closable="false">
-                      <p class="subtitle is-5">
-                        {{user.firstName}} {{user.lastName}}
-                        <br />
-                        {{entered.address}}
-                        <br />
-                        {{entered.cityNumber}} {{entered.city}}
-                        <br />
-                        {{entered.country}}
-                      </p>
-                    </b-notification>
-                    <h1 class="title is-4">Payment option</h1>
-                    <b-button
-                      class="is-info"
-                      :loading="loading"
-                      :disabled="disabled"
-                      @click="fakeLoading()"
-                    >
-                      <span class="title is-5 has-text-white">PayPal</span>
-                    </b-button>
+                <div class="section max-width-800">
+                  <div class="columns">
+                    <div class="column section">
+                      <p
+                        class="title is-4 is-dark is-spaced"
+                      >Please double check entered information</p>
+                      <b-notification class="has-text-dark" :closable="false">
+                        <p class="subtitle is-5">
+                          {{user.firstName}} {{user.lastName}}
+                          <br />
+                          {{entered.address}}
+                          <br />
+                          {{entered.cityNumber}} {{entered.city}}
+                          <br />
+                          {{entered.country}}
+                        </p>
+                      </b-notification>
+                      <h1 class="title is-4">Payment option</h1>
+                      <b-button
+                        class="is-info"
+                        :loading="loading"
+                        :disabled="disabled"
+                        @click="fakeLoading()"
+                      >
+                        <span class="title is-5 has-text-white">PayPal</span>
+                      </b-button>
+                    </div>
                   </div>
                 </div>
               </b-step-item>
@@ -87,10 +91,10 @@ export default {
   data() {
     return {
       entered: {
-        city: '',
-        address: '',
-        cityNumber: '',
-        country: ''
+        city: "",
+        address: "",
+        cityNumber: "",
+        country: ""
       },
       loading: false,
       disabled: false,
@@ -107,10 +111,14 @@ export default {
         this.loading = false;
         this.disabled = false;
         console.log(this.transactionData);
-        this.$store.dispatch("createNewTransaction", this.user.id, this.transactionData);
+        this.$store.dispatch(
+          "createNewTransaction",
+          this.user.id,
+          this.transactionData
+        );
         this.$router.push("/receipts");
       }, 500);
-    },
+    }
   },
   computed: {
     cartItems() {
@@ -122,7 +130,7 @@ export default {
     user() {
       return this.$store.getters["getUser"];
     },
-    transactionData(){
+    transactionData() {
       return this.$store.getters["getTransactionData"];
     }
   }
@@ -143,5 +151,10 @@ export default {
 
 .margin-10 {
   margin-top: -12px;
+}
+
+.max-width-800 {
+  max-width: 800px;
+  margin: 0 auto;
 }
 </style>

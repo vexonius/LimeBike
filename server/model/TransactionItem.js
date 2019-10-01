@@ -1,20 +1,18 @@
-const Sequelize = require('sequelize');
-
-module.exports = (sequelize) => {
+module.exports = (sequelize, DataTypes) => {
     const TransactionItem = sequelize.define('transactionItem', {
         id: {
-            type: Sequelize.UUID,
-            defaultValue: Sequelize.UUIDV4,
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
             primaryKey: true
         },
         amount: {
-            type: Sequelize.INTEGER,
+            type: DataTypes.INTEGER,
         },
         bicycleId: {
-            type: Sequelize.UUID
+            type: DataTypes.UUID
         },
         transactionId: {
-            type: Sequelize.UUID
+            type: DataTypes.UUID
         }
         
     }, {

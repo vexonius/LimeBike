@@ -37,12 +37,8 @@
               </div>
             </div>
           </b-navbar-item>
-          <b-navbar-item tag="router-link" :to="{ path: '/checkout' }">
-            <div
-              class="dropdown is-hoverable is-right"
-              v-show="isUserLogged"
-              @click="routeToCheckout()"
-            >
+          <b-navbar-item>
+            <div class="dropdown is-hoverable is-right" v-show="isUserLogged">
               <div class="dropdown-trigger dropdown-padding">
                 <button class="button is-text" aria-haspopup="true" aria-controls="dropdown-menu4">
                   <span class="icon is-small">

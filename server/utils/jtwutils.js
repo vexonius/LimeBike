@@ -1,7 +1,7 @@
 
 const passportJWT = require('passport-jwt');
 const jwt = require('jsonwebtoken');
-const db = require('./../model/database');
+const db = require('../model/database');
 
 
 const ExtractJwt = passportJWT.ExtractJwt;

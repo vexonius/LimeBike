@@ -1,12 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import $store from './store/store'
-import Landing from "@/components/Landing.vue";
+import $store from "./store/store";
+import Landing from "./views/Landing.vue";
 import Register from "@/components/Register.vue";
 import Login from "@/components/Login.vue";
-import Checkout from "@/components/Checkout.vue";
-import Home from "@/views/Home.vue";
-import Receipts from '@/views/Receipts.vue';
+import Checkout from "./views/Checkout.vue";
+import Home from "./views/Home.vue";
+import Receipts from "./views/Receipts.vue";
 
 Vue.use(VueRouter);
 
@@ -38,37 +38,35 @@ let router = new VueRouter({
       }
     },
     {
-      path: '/receipts',
-      name: 'receipts',
+      path: "/receipts",
+      name: "receipts",
       component: Receipts,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: '/checkout',
-      name: 'checkout',
+      path: "/checkout",
+      name: "checkout",
       component: Checkout,
       meta: {
         requiresAuth: true
       }
     },
     {
-      path: '*',
+      path: "*",
       redirect: "/home"
     }
   ]
 });
 
-
-
 router.beforeEach((to, from, next) => {
   let logged = $store.getters["isUserLogged"];
-  let isAuthRoute = to.matched.some(item => item.meta.requiresAuth)
+  let isAuthRoute = to.matched.some(item => item.meta.requiresAuth);
 
   if (isAuthRoute && logged) return next();
-  if (isAuthRoute) return next({ name: 'login' })
-  next()
+  if (isAuthRoute) return next({ name: "login" });
+  next();
 });
 
 export default router;

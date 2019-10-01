@@ -8,10 +8,6 @@
 </template>
 
 <script>
-import AdminDash from "./components/AdminDash.vue";
-import Login from "./components/Login.vue";
-import Register from "./components/Register.vue";
-import Landing from "./components/Landing.vue";
 import Navbar from "./components/Navbar.vue";
 
 export default {

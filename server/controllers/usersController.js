@@ -1,5 +1,4 @@
-const db = require('./../model/database');
-const jwtUtils = require('./../utils/jtwutils');
+const db = require('../model/database');
 
 module.exports = {
     async getUserInfo(req, res) {
@@ -38,12 +37,13 @@ module.exports = {
             res.status(200).json(data);
         }).catch(err => {
             console.error(err);
-            res.status(404).json({ msg: 'Something went wrong' })
+            res.status(500).json({ msg: 'Something went wrong' })
         });
     },
 
     async createNewTransaction(req, res) {
         const transaction = req.body;
+        console.log(req);
         let total = parseFloat(transaction.total).toFixed(2);
 
         // znam da je malo neuredan kod, ali bulkCreate nije radia za mene
@@ -59,13 +59,11 @@ module.exports = {
                     .then(res.status(200).json({ msg: "Data inserted in db" }))
                     .catch(err => {
                         console.error(err);
-                        res.status(400).json({ msg: 'Something went wrong' });
+                        res.status(500).json({ msg: 'Something went wrong' });
                     })
             }).catch(err => {
                 console.error(err);
-                res.status(400).json({ msg: 'Something went wrong' })
+                res.status(500).json({ msg: 'Something went wrong' })
             });
-
-
     }
 };

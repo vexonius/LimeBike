@@ -1,5 +1,5 @@
 <template>
-  <div class="section is-widescreen">
+  <div class="section is-widescreen custom-margins">
     <div class="columns">
       <div class="column is-one-quarter">
         <div class="card dark fixed">
@@ -33,7 +33,7 @@
 import BikeItem from "./../components/BikeItem.vue";
 
 export default {
-  name: "home",
+  name: "Home",
   components: {
     BikeItem
   },
@@ -43,9 +43,7 @@ export default {
     };
   },
   methods: {
-    isFilteringOn() {
-      return false;
-    }
+
   },
   computed: {
     products() {
@@ -54,9 +52,7 @@ export default {
         : this.$store.getters["getAllProducts"];
     },
     filteringOn() {
-      if (this.isFilteringOn()) return true;
-
-      return false;
+      return this.$store.getters["isFilteringOn"];
     },
     filters(){
       return this.$store.getters["getFilters"];
@@ -69,6 +65,10 @@ export default {
 </script>
 
 <style scoped>
+.custom-margins {
+  margin: 0 60px;
+}
+
 .fixed {
   position: sticky;
   top: 24px;

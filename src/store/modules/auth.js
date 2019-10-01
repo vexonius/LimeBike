@@ -21,7 +21,7 @@ const getters = {
     return state.error;
   },
 
-  isLoading: state => {
+  isLoading: state => { 
     return state.isLoading;
   }
 };

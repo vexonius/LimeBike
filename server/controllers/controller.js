@@ -1,5 +1,5 @@
 const Bcrypt = require('bcrypt');
-const db = require('./../model/database');
+const db = require('../model/database');
 const jwtUtils = require('./../utils/jtwutils');
 
 module.exports = {
@@ -42,7 +42,7 @@ module.exports = {
                         if (err.errors[0].path == 'email')
                             return res.status(400).json({ message: 'Please enter a valid email and try again' });
 
-                        res.status(400).json({ message: "Something went wrong, please try again later." })
+                        return res.status(500).json({ message: "Something went wrong, please try again later." });
                     });
             }
         }
