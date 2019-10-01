@@ -108,9 +108,10 @@ const actions = {
     return config;
   },
 
-  createNewTransaction(context, id, data){
+  createNewTransaction(context, tdata){
+    console.log(tdata);
     context.dispatch("getAuthToken").then(config => {
-      Repository.createNewTransaction(id, data, config)
+      Repository.createNewTransaction(tdata, config)
       .then(response => console.log(response))
       .catch(err => console.log(err));
     })

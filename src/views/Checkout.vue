@@ -113,7 +113,6 @@ export default {
         console.log(this.transactionData);
         this.$store.dispatch(
           "createNewTransaction",
-          this.user.id,
           this.transactionData
         );
         this.$router.push("/receipts");
