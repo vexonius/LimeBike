@@ -69,9 +69,9 @@ const actions = {
 
   logout(context) {
     context.commit("setUserLoggedIn", false);
-    router.push("/");
-    context.commit("saveUserInfo", null);
+    context.commit("saveUserInfo", {});
     context.dispatch("saveToken", null);
+    router.push("/");
 
   },
 
@@ -91,10 +91,6 @@ const actions = {
 
   clearError(context) {
     context.commit("clearErrorMessage");
-  },
-
-  updateUserInfo() {
-
   },
 
   getAuthToken(){

@@ -62,6 +62,10 @@ const actions = {
         context.commit("decreaseByOne", index);
     },
 
+    clearCart(context){
+        context.commit("clearCart");
+    }
+
 
 }
 
@@ -85,6 +89,10 @@ const mutations = {
 
         if(state.items[index].amount==0)
             state.items.splice(index, 1);
+    },
+    clearCart(state){
+        state.items = [];
+        state.total = 0;
     }
 }
 

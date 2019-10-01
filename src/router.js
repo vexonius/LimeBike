@@ -7,6 +7,7 @@ import Login from "@/components/Login.vue";
 import Checkout from "./views/Checkout.vue";
 import Home from "./views/Home.vue";
 import Receipts from "./views/Receipts.vue";
+import Confirmation from "./views/Confirmation.vue";
 
 Vue.use(VueRouter);
 
@@ -49,6 +50,14 @@ let router = new VueRouter({
       path: "/checkout",
       name: "checkout",
       component: Checkout,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/confirmation",
+      name: "confirmation",
+      component: Confirmation,
       meta: {
         requiresAuth: true
       }

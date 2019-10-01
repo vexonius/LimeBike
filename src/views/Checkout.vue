@@ -115,7 +115,8 @@ export default {
           "createNewTransaction",
           this.transactionData
         );
-        this.$router.push("/receipts");
+        this.$store.dispatch("clearCart");
+        this.$router.push("/confirmation");
       }, 500);
     }
   },

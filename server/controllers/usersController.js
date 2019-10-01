@@ -43,7 +43,6 @@ module.exports = {
 
     async createNewTransaction(req, res) {
         const transaction = req.body;
-        console.log(req);
         let total = parseFloat(transaction.total).toFixed(2);
 
         // znam da je malo neuredan kod, ali bulkCreate nije radia za mene

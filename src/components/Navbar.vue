@@ -19,7 +19,7 @@
             <div class="dropdown is-hoverable is-right" v-show="isUserLogged">
               <div class="dropdown-trigger">
                 <button
-                  class="button is-text has-padding-sideways"
+                  class="button is-light has-padding-sideways"
                   aria-haspopup="true"
                   aria-controls="dropdown-menu4"
                 >
@@ -40,7 +40,7 @@
           <b-navbar-item>
             <div class="dropdown is-hoverable is-right" v-show="isUserLogged">
               <div class="dropdown-trigger dropdown-padding">
-                <button class="button is-text" aria-haspopup="true" aria-controls="dropdown-menu4">
+                <button class="button is-white" aria-haspopup="true" aria-controls="dropdown-menu4">
                   <span class="icon is-small">
                     <b-icon pack="fas" icon="shopping-basket" size="is-small"></b-icon>
                     <span class="badge" v-show="itemCount">{{itemCount}}</span>

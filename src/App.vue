@@ -89,14 +89,14 @@ $link-focus-border: $primary;
 body {
   margin: 0;
   padding: 0;
-  color: #ffffff;
+
 }
 
 #app {
   font-family: "Heebo", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #ffffff;
+ 
 }
 #nav {
   padding: 10px;
