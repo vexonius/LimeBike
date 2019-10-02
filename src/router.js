@@ -56,6 +56,7 @@ let router = new VueRouter({
     },
     {
       path: "/confirmation",
+      props: true,
       name: "confirmation",
       component: Confirmation,
       meta: {

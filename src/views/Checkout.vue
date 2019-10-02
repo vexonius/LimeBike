@@ -111,12 +111,7 @@ export default {
         this.loading = false;
         this.disabled = false;
         console.log(this.transactionData);
-        this.$store.dispatch(
-          "createNewTransaction",
-          this.transactionData
-        );
-        this.$store.dispatch("clearCart");
-        this.$router.push("/confirmation");
+        this.$store.dispatch("createNewTransaction", this.transactionData);
       }, 500);
     }
   },

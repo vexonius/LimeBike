@@ -3,7 +3,7 @@
     <div class="container">
       <div class="column">
         <p class="title is-2">Thanks for your purchase!</p>
-        <p class="subtitle is-4">Order #5342</p>
+        <p class="subtitle is-4">Order #{{id}}</p>
         <p
           class="content is-medium has-text-dark"
         >Your order is complete! Please check the map for pick up location. Order details were sent to your email.</p>
@@ -27,6 +27,12 @@ export default {
   components: {},
   data() {
     return {};
+  },
+  props: {
+    id: {
+      type: String,
+      default: ''
+    },
   },
   methods: {},
 };

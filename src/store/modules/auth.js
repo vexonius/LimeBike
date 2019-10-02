@@ -4,7 +4,7 @@ import router from "./../../router";
 const state = {
   isLogged: false,
   user: {},
-  error: '',
+  error: "",
   isLoading: false
 };
 
@@ -21,7 +21,7 @@ const getters = {
     return state.error;
   },
 
-  isLoading: state => { 
+  isLoading: state => {
     return state.isLoading;
   }
 };
@@ -45,12 +45,20 @@ const actions = {
   },
 
   saveToken(context, token) {
-    localStorage.setItem('jwt', token);
+    localStorage.setItem("jwt", token);
   },
 
   registerUser(context, user) {
-    if ((user && user.firstName && user.lastName && user.username && user.email && user.password && user.passwordrep)
-      && (user.password === user.passwordrep)) {
+    if (
+      user &&
+      user.firstName &&
+      user.lastName &&
+      user.username &&
+      user.email &&
+      user.password &&
+      user.passwordrep &&
+      user.password === user.passwordrep
+    ) {
       Repository.register(user)
         .then(response => {
           console.log(response);
@@ -63,7 +71,9 @@ const actions = {
         });
     } else {
       context.dispatch("setLoading", false);
-      context.commit("pushError", { message: "Please check if you entered all the required credentials" });
+      context.commit("pushError", {
+        message: "Please check if you entered all the required credentials"
+      });
     }
   },
 
@@ -72,7 +82,6 @@ const actions = {
     context.commit("saveUserInfo", {});
     context.dispatch("saveToken", null);
     router.push("/");
-
   },
 
   setLoading(context, val) {
@@ -85,7 +94,9 @@ const actions = {
       dispatch("loginUser", user);
     } else {
       dispatch("setLoading", false);
-      commit("pushError", { message: "Please check if you entered all the required credentials" });
+      commit("pushError", {
+        message: "Please check if you entered all the required credentials"
+      });
     }
   },
 
@@ -93,10 +104,10 @@ const actions = {
     context.commit("clearErrorMessage");
   },
 
-  getAuthToken(){
-    let token = localStorage.getItem('jwt');
+  getAuthToken() {
+    let token = localStorage.getItem("jwt");
     let config = {
-      headers: {'Authorization': "Bearer " + token}
+      headers: { Authorization: "Bearer " + token }
     };
 
     console.log(config);
@@ -104,15 +115,18 @@ const actions = {
     return config;
   },
 
-  createNewTransaction(context, tdata){
+  createNewTransaction(context, tdata) {
     console.log(tdata);
     context.dispatch("getAuthToken").then(config => {
       Repository.createNewTransaction(tdata, config)
-      .then(response => console.log(response))
-      .catch(err => console.log(err));
-    })
+        .then(response => {
+          console.log(response);
+          context.dispatch("clearCart");
+          router.push({name: "confirmation", params: {id: response.data.id}});
+        })
+        .catch(err => console.log(err));
+    });
   }
-
 };
 
 const mutations = {
@@ -133,9 +147,8 @@ const mutations = {
   },
 
   clearErrorMessage(state) {
-    state.error = '';
+    state.error = "";
   }
-
 };
 
 export default {

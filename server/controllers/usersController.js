@@ -55,7 +55,7 @@ module.exports = {
                     return item;
                 });
                 db.transactionItem.bulkCreate(items)
-                    .then(res.status(200).json({ msg: "Data inserted in db" }))
+                    .then(res.status(200).json({ msg: "Data inserted in db", id: t.id }))
                     .catch(err => {
                         console.error(err);
                         res.status(500).json({ msg: 'Something went wrong' });

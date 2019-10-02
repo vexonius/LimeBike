@@ -2,7 +2,7 @@
   <div>
     <div class="container is-widescreen">
       <div class="section is-vcentered is-centered columns">
-        <div class="column has-text-centered">
+        <div class="column has-text-centered has-margin-top-40">
           <h1 class="title is-spaced is-1">
             Stay
             <strong class="highlighted">active</strong>
@@ -10,7 +10,7 @@
           </h1>
           <b-button class="is-primary is-large" @click="routeToHome()" rounded outlined>Rent LimeBike</b-button>
 
-          <figure class="video negative-margin">
+          <figure class="video">
             <video playsinline autoplay muted loop>
               <source
                 src="https://cdn.dribbble.com/users/3419830/videos/23722/cyclists.mp4"
@@ -48,11 +48,8 @@ $primary: #3ddc84;
 }
 
 .has-margin-top-40{
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
-.negative-margin{
-  margin-top: 0;
-}
 
 </style>
