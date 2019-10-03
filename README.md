@@ -3,6 +3,9 @@
 Zadatak za EE Summer Camp 2019. 
 Frontend je u /src, a backend u /server folderu. Korištene tehnologije: Vuejs (Vuex, Router, Buefy), Express, Sequelize i PostgreSQL.
 
+# Overview
+![](limebikedemo.gif)
+
 ## Project setup and dependency installation
 ```
 npm install

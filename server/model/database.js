@@ -35,7 +35,6 @@ Promise.all([db.user.sync(), db.bicycle.sync(), db.transaction.sync(), db.transa
 
 sequelize.authenticate()
     .then(() => {
-        test();
         console.log('Connection has been established successfully.')
     })
     .catch(err => console.error('Unable to connect to the database:', err));
