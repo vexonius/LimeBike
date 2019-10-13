@@ -37,14 +37,6 @@ export default {
   components: {
     BikeItem
   },
-  data() {
-    return {
-      
-    };
-  },
-  methods: {
-
-  },
   computed: {
     products() {
       return this.filteringOn

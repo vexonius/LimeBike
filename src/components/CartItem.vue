@@ -42,7 +42,7 @@ export default {
       default: null
     },
     index: {
-        type: Number
+      type: Number
     }
   },
   computed: {
@@ -53,11 +53,11 @@ export default {
   methods: {
     remove() {},
     addOneMore() {
-        this.$store.dispatch("addOneMore", this.index);
+      this.$store.dispatch("addOneMore", this.index);
     },
     removeOne() {
-        console.log(this.index);
-        this.$store.dispatch("removeOne", this.index);
+      console.log(this.index);
+      this.$store.dispatch("removeOne", this.index);
     }
   }
 };

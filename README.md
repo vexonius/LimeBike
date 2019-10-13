@@ -11,6 +11,11 @@ Frontend je u /src, a backend u /server folderu. Korištene tehnologije: Vuejs (
 npm install
 ```
 
+### Compiles and boots server 
+```
+npm run boot-server
+```
+
 ### Compiles and hot-reloads for development (FRONTEND)
 ```
 npm run serve

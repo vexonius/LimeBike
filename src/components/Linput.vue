@@ -8,14 +8,8 @@
     export default {
         name: "Linput",
         props: {
-            placeholder: {
-                type: String,
-                default: '' 
-            },
-            hide: {
-                type: Boolean,
-                default: false
-            }
+            placeholder: { type: String, default: '' },
+            hide: { type: Boolean, default: false }
         },
         data() {
             return {
@@ -25,11 +19,7 @@
         },
         methods: {
             passwordType() {
-                if(this.hide){
-                    return 'password';
-                 } else {
-                     return 'text';
-                 }
+                return this.hide ? 'password' : 'text';             
             }
         },
     }

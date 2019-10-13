@@ -29,9 +29,6 @@
 
 export default {
   name: "Landing",
-  components: {
-    
-  },
   methods: {
     routeToHome() {
       this.$router.push('/home');

@@ -24,17 +24,12 @@
 <script>
 export default {
   name: "Confirmation",
-  components: {},
-  data() {
-    return {};
-  },
   props: {
     id: {
       type: String,
       default: ''
     },
   },
-  methods: {},
 };
 </script>
 

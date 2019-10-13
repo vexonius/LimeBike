@@ -60,8 +60,11 @@ export default {
       this.$router.push("/register");
     },
     checkInputs() {
-      this.$store.dispatch("checkInputs", { name: this.username, password: this.pwd });
-    },
+      this.$store.dispatch("checkInputs", {
+        name: this.username,
+        password: this.pwd
+      });
+    }
   },
   computed: {
     errorMessage() {
@@ -70,7 +73,7 @@ export default {
     loading() {
       return this.$store.getters["isLoading"];
     }
-  },
+  }
 };
 </script>
 

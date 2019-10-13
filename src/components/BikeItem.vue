@@ -8,7 +8,12 @@
     <div class="card-content">
       <span class="tag is-light has-margin-10">{{bike.category}}</span>
       <p class="title is-5">{{bike.name}}</p>
-      <b-button rounded outlined class="is-primary bold-text is-pulled-right" @click="addToBasket()">Add to cart</b-button>
+      <b-button
+        rounded
+        outlined
+        class="is-primary bold-text is-pulled-right"
+        @click="addToBasket()"
+      >Add to cart</b-button>
       <p class="title is-primary is-5">${{bike.price}}/day</p>
     </div>
   </div>
@@ -17,15 +22,8 @@
 <script>
 export default {
   name: "BikeItem",
-  data() {
-    return {
-    };
-  },
   props: {
-    bike: {
-      type: Object,
-      default: null
-    },
+    bike: { type: Object, default: null }
   },
   methods: {
     imageModal(url) {
@@ -35,14 +33,14 @@ export default {
           </p>`
       );
     },
-    addToBasket(){
+    addToBasket() {
       this.$store.dispatch("addItemToCart", this.bike);
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
 .card-style {
   border-radius: 12px;
   border: 2px solid #eeeeee;
