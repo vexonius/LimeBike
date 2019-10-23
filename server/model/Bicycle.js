@@ -14,7 +14,7 @@ module.exports = (sequelize, Datatypes) => {
         type: Datatypes.TEXT
       },
       photoUrl: {
-        type: Datatypes.STRING
+        type: Datatypes.TEXT
       },
       year: {
         type: Datatypes.INTEGER

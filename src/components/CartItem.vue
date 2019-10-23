@@ -51,7 +51,6 @@ export default {
     }
   },
   methods: {
-    remove() {},
     addOneMore() {
       this.$store.dispatch("addOneMore", this.index);
     },
