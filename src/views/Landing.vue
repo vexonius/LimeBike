@@ -8,7 +8,12 @@
             <strong class="highlighted">active</strong>
             <br />on your vacation
           </h1>
-          <b-button class="is-primary is-large" @click="routeToHome()" rounded outlined>Rent LimeBike</b-button>
+          <b-button
+            class="is-primary is-large"
+            @click="routeToHome()"
+            rounded
+            outlined
+          >Rent LimeBike</b-button>
 
           <figure class="video">
             <video playsinline autoplay muted loop>
@@ -25,16 +30,14 @@
 </template>
 
 <script>
-
-
 export default {
-  name: "Landing",
+  name: 'Landing',
   methods: {
     routeToHome() {
-      this.$router.push('/home');
+      this.$router.push('/home')
     }
-  },
-};
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -44,9 +47,7 @@ $primary: #3ddc84;
   color: $primary;
 }
 
-.has-margin-top-40{
-    margin-top: 40px;
+.has-margin-top-40 {
+  margin-top: 40px;
 }
-
-
 </style>

@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: "BikeItem",
+  name: 'BikeItem',
   props: {
     bike: { type: Object, default: null }
   },
@@ -31,13 +31,13 @@ export default {
         `<p class="image is-16by10">
             <img src="${url}">
           </p>`
-      );
+      )
     },
     addToBasket() {
-      this.$store.dispatch("addItemToCart", this.bike);
+      this.$store.dispatch('addItemToCart', this.bike)
     }
   }
-};
+}
 </script>
 
 <style scoped>

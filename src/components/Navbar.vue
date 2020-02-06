@@ -88,56 +88,56 @@
 </template>
 
 <script>
-import CartItem from "@/components/CartItem.vue";
+import CartItem from '@/components/CartItem.vue'
 
 export default {
-  name: "Navbar",
+  name: 'Navbar',
   data() {
     return {
       navActive: false
-    };
+    }
   },
   components: {
     CartItem
   },
   methods: {
     routeToHome() {
-      this.$router.push("/home");
+      this.$router.push('/home')
     },
     routeToLogin() {
-      this.$router.push("/login");
+      this.$router.push('/login')
     },
     routeToRegister() {
-      this.$router.push("/register");
+      this.$router.push('/register')
     },
     routeToReceipts() {
-      this.$router.push("/receipts");
+      this.$router.push('/receipts')
     },
     routeToCheckout() {
-      this.$router.push("/checkout");
+      this.$router.push('/checkout')
     },
     logout() {
-      this.$store.dispatch("logout");
+      this.$store.dispatch('logout')
     }
   },
   computed: {
     user() {
-      return this.$store.getters["getUser"];
+      return this.$store.getters['getUser']
     },
     isUserLogged() {
-      return this.$store.getters["isUserLogged"];
+      return this.$store.getters['isUserLogged']
     },
     itemCount() {
-      return this.$store.getters["getItemsCount"];
+      return this.$store.getters['getItemsCount']
     },
     cartItems() {
-      return this.$store.getters["getItemsInCart"];
+      return this.$store.getters['getItemsInCart']
     },
     total() {
-      return this.$store.getters["getTotal"];
+      return this.$store.getters['getTotal']
     }
   }
-};
+}
 </script>
 
 

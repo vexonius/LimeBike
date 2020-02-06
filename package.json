@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "boot-server": "nodemon server/server"
+    "boot-server": "nodemon server/server",
+    "seed": "sequelize-cli db:seed:all"
   },
   "dependencies": {
     "apexcharts": "^3.8.4",
@@ -16,6 +17,7 @@
     "bulma-divider": "^0.2.0",
     "core-js": "^2.6.5",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "helmet": "^3.21.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
@@ -23,6 +25,7 @@
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.19.0",
     "sequelize-cli": "^5.5.1",
+    "uuid": "^3.4.0",
     "vue": "^2.6.10",
     "vue-apexcharts": "^1.4.0",
     "vue-router": "^3.0.3",

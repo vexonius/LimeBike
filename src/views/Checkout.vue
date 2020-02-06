@@ -78,12 +78,12 @@
 </template>
 
 <script>
-import CartItem from "@/components/CartItem.vue";
-import Linput from "@/components/Linput.vue";
-import { setTimeout } from "timers";
+import CartItem from '@/components/CartItem.vue'
+import Linput from '@/components/Linput.vue'
+import { setTimeout } from 'timers'
 
 export default {
-  name: "Checkout",
+  name: 'Checkout',
   components: {
     CartItem,
     Linput
@@ -91,49 +91,49 @@ export default {
   data() {
     return {
       entered: {
-        city: "",
-        address: "",
-        cityNumber: "",
-        country: ""
+        city: '',
+        address: '',
+        cityNumber: '',
+        country: ''
       },
       loading: false,
       disabled: false,
       activeStep: 0,
       nextStep: false
-    };
+    }
   },
   methods: {
     fakeLoading() {
-      this.loading = true;
-      this.disabled = true;
+      this.loading = true
+      this.disabled = true
 
       setTimeout(() => {
-        this.loading = false;
-        this.disabled = false;
-        console.log(this.transactionData);
-        this.$store.dispatch("createNewTransaction", this.transactionData);
-      }, 500);
+        this.loading = false
+        this.disabled = false
+        console.log(this.transactionData)
+        this.$store.dispatch('createNewTransaction', this.transactionData)
+      }, 500)
     }
   },
   computed: {
     cartItems() {
-      return this.$store.getters["getItemsInCart"];
+      return this.$store.getters['getItemsInCart']
     },
     total() {
-      return this.$store.getters["getTotal"];
+      return this.$store.getters['getTotal']
     },
     user() {
-      return this.$store.getters["getUser"];
+      return this.$store.getters['getUser']
     },
     transactionData() {
-      return this.$store.getters["getTransactionData"];
+      return this.$store.getters['getTransactionData']
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "~bulma-divider";
+@import '~bulma-divider';
 
 .cart-style {
   border-radius: 12px;

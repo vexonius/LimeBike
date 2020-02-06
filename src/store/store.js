@@ -14,5 +14,5 @@ export default new Vuex.Store({
     bikes,
     auth
   },
-  strict: debug,
+  strict: debug
 })

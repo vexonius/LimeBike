@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Navbar from "./components/Navbar.vue";
+import Navbar from './components/Navbar.vue'
 
 export default {
   components: {
@@ -16,15 +16,15 @@ export default {
   },
   watch: {
     $route(to, from) {
-      this.$store.dispatch("clearError");
+      this.$store.dispatch('clearError')
     }
   }
-};
+}
 </script>
 
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css?family=Heebo:400,500,800&display=swap");
-@import "~bulma/sass/utilities/_all";
+@import url('https://fonts.googleapis.com/css?family=Heebo:400,500,800&display=swap');
+@import '~bulma/sass/utilities/_all';
 
 // Set your colors
 $primary: #3ddc84;
@@ -32,46 +32,46 @@ $primary-invert: findColorInvert($primary);
 
 // tiles
 $title-family: false;
-$body-family: "Heebo", sans-serif;
+$body-family: 'Heebo', sans-serif;
 
 // Custom buttons
 $button-border-width: 2px;
 
 // Setup $colors to use as bulma classes
 $colors: (
-  "white": (
+  'white': (
     $white,
     $black
   ),
-  "black": (
+  'black': (
     $black,
     $white
   ),
-  "light": (
+  'light': (
     $light,
     $light-invert
   ),
-  "dark": (
+  'dark': (
     $dark,
     $dark-invert
   ),
-  "primary": (
+  'primary': (
     $primary,
     $primary-invert
   ),
-  "info": (
+  'info': (
     $info,
     $info-invert
   ),
-  "success": (
+  'success': (
     $success,
     $success-invert
   ),
-  "warning": (
+  'warning': (
     $warning,
     $warning-invert
   ),
-  "danger": (
+  'danger': (
     $danger,
     $danger-invert
   )
@@ -80,20 +80,18 @@ $colors: (
 // Links
 $link: $primary;
 
-@import "~bulma";
-@import "~buefy/src/scss/buefy";
+@import '~bulma';
+@import '~buefy/src/scss/buefy';
 
 body {
   margin: 0;
   padding: 0;
-
 }
 
 #app {
-  font-family: "Heebo", sans-serif;
+  font-family: 'Heebo', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
- 
 }
 #nav {
   padding: 10px;

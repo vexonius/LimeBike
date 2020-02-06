@@ -1,41 +1,45 @@
 <template>
-    <div class="cont">
-        <input class="material" :placeholder="placeholder" :type="passwordType()" :value="value" @input="$emit('input', $event.target.value)"></input>
-    </div>
+  <div class="cont">
+    <input
+      class="material"
+      :placeholder="placeholder"
+      :type="passwordType()"
+      :value="value"
+      @input="$emit('input', $event.target.value)"
+    />
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "Linput",
-        props: {
-            placeholder: { type: String, default: '' },
-            hide: { type: Boolean, default: false }
-        },
-        data() {
-            return {
-                data: "data",
-                value: ''
-            }
-        },
-        methods: {
-            passwordType() {
-                return this.hide ? 'password' : 'text';             
-            }
-        },
+export default {
+  name: 'Linput',
+  props: {
+    placeholder: { type: String, default: '' },
+    hide: { type: Boolean, default: false }
+  },
+  data() {
+    return {
+      data: 'data',
+      value: ''
     }
+  },
+  methods: {
+    passwordType() {
+      return this.hide ? 'password' : 'text'
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
-
 .cont {
-    display: flex;
-    margin: 10px;
-    background: #eeeeee;
-    border: 0;
-    border-radius: 20px;
-    padding: 10px;
+  display: flex;
+  margin: 10px;
+  background: #eeeeee;
+  border: 0;
+  border-radius: 20px;
+  padding: 10px;
 }
-
 
 .material {
   display: inline-block;
@@ -59,8 +63,7 @@
 
 .material:focus {
   background: none;
-  border:0;
+  border: 0;
   outline: none;
 }
-
 </style>

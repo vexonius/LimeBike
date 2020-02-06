@@ -76,10 +76,10 @@
 </template>
 
 <script>
-import VueApexCharts from "vue-apexcharts";
+import VueApexCharts from 'vue-apexcharts'
 
 export default {
-  name: "AdminDash",
+  name: 'AdminDash',
   components: {
     apexchart: VueApexCharts
   },
@@ -87,13 +87,13 @@ export default {
     return {
       series: [
         {
-          name: "Bikes",
+          name: 'Bikes',
           data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
         }
       ],
       chartOptions: {
         theme: {
-          mode: "dark",
+          mode: 'dark',
           monochrome: {
             enabled: false
           }
@@ -106,38 +106,38 @@ export default {
           toolbar: {
             show: false
           },
-          background: "#252526",
-          foreColor: "#dadada"
+          background: '#252526',
+          foreColor: '#dadada'
         },
-        colors: ["#88da1e"],
+        colors: ['#88da1e'],
         dataLabels: {
           enabled: false
         },
         stroke: {
-          curve: "smooth"
+          curve: 'smooth'
         },
         title: {
-          text: "",
-          align: "left"
+          text: '',
+          align: 'left'
         },
         grid: {},
         xaxis: {
           categories: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep"
+            'Jan',
+            'Feb',
+            'Mar',
+            'Apr',
+            'May',
+            'Jun',
+            'Jul',
+            'Aug',
+            'Sep'
           ]
         }
       }
-    };
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

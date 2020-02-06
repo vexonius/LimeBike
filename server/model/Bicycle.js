@@ -1,6 +1,6 @@
 module.exports = (sequelize, Datatypes) => {
   const Bicycle = sequelize.define(
-    "bicycle",
+    'bicycle',
     {
       serialNumber: {
         type: Datatypes.UUID,
@@ -27,10 +27,10 @@ module.exports = (sequelize, Datatypes) => {
       }
     },
     {
-      modelName: "bicycle",
+      modelName: 'bicycle',
       timestamps: true
     }
-  );
+  )
 
-  return Bicycle;
-};
+  return Bicycle
+}

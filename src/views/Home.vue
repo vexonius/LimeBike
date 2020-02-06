@@ -18,10 +18,9 @@
           <div
             class="column is-12-mobile is-6-tablet is-4-widescreen is-6-desktop"
             v-for="product in products"
-            :key="product.serialNumber">
-            <BikeItem
-              :bike="product"
-            />
+            :key="product.serialNumber"
+          >
+            <BikeItem :bike="product" />
           </div>
         </div>
       </div>
@@ -30,30 +29,30 @@
 </template>
 
 <script>
-import BikeItem from "./../components/BikeItem.vue";
+import BikeItem from './../components/BikeItem.vue'
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     BikeItem
   },
   computed: {
     products() {
       return this.filteringOn
-        ? this.$store.getters["getProductsFiltered"]
-        : this.$store.getters["getAllProducts"];
+        ? this.$store.getters['getProductsFiltered']
+        : this.$store.getters['getAllProducts']
     },
     filteringOn() {
-      return this.$store.getters["isFilteringOn"];
+      return this.$store.getters['isFilteringOn']
     },
-    filters(){
-      return this.$store.getters["getFilters"];
+    filters() {
+      return this.$store.getters['getFilters']
     }
   },
   mounted() {
-    return this.$store.dispatch("fetchProducts");
+    return this.$store.dispatch('fetchProducts')
   }
-};
+}
 </script>
 
 <style scoped>

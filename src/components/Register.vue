@@ -55,47 +55,47 @@
 </template>
 
 <script>
-import Linput from "./Linput.vue";
+import Linput from './Linput.vue'
 
 export default {
-  name: "Register",
+  name: 'Register',
   components: {
     Linput
   },
   data() {
     return {
       user: {
-        firstName: "",
-        lastName: "",
-        username: "",
-        email: "",
-        password: "",
-        passwordrep: ""
+        firstName: '',
+        lastName: '',
+        username: '',
+        email: '',
+        password: '',
+        passwordrep: ''
       }
-    };
+    }
   },
   methods: {
     routeToLogin() {
-      this.$router.push("/login");
+      this.$router.push('/login')
     },
 
     registerUser() {
-      this.$store.dispatch("registerUser", this.user);
-    },
+      this.$store.dispatch('registerUser', this.user)
+    }
   },
   computed: {
     errorMessage() {
-      return this.$store.getters["getError"];
+      return this.$store.getters['getError']
     },
     loading() {
-      return this.$store.getters["loading"];
+      return this.$store.getters['loading']
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "~bulma-divider";
+@import '~bulma-divider';
 
 .bucketed {
   background: #f3f3f3;

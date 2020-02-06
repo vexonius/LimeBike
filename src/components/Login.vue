@@ -1,19 +1,23 @@
 <template>
   <div>
-    <div class="section bucketed">
+    <div class="section bucketed" v-on:keydown.enter="checkInputs()">
       <div class="columns is-centered">
         <div class="column max is-centered">
           <div class="box">
             <div class="columns has-text-centered has-margin-10">
               <div class="column">
-                <b-message v-show="errorMessage" title="Error" type="is-danger">{{errorMessage}}</b-message>
+                <b-message 
+                  v-show="errorMessage" 
+                  title="Error" 
+                  type="is-danger">
+                  {{errorMessage}}
+                </b-message>
                 <figure class="image is-64x64 has-image-centered">
                   <img class="is" src="./../assets/bikelogo.png" />
                 </figure>
                 <p class="title is-2">Log in</p>
               </div>
             </div>
-
             <Linput placeholder="username" v-model="username" />
             <Linput placeholder="password" :hide="true" v-model="pwd" />
             <div class="columns has-margin-10">
@@ -42,43 +46,43 @@
 </template>
 
 <script>
-import Linput from "./Linput.vue";
+import Linput from './Linput.vue'
 
 export default {
-  name: "Login",
+  name: 'Login',
   components: {
     Linput
   },
   data() {
     return {
-      username: "",
-      pwd: ""
-    };
+      username: '',
+      pwd: ''
+    }
   },
   methods: {
     routeToRegister() {
-      this.$router.push("/register");
+      this.$router.push('/register')
     },
     checkInputs() {
-      this.$store.dispatch("checkInputs", {
+      this.$store.dispatch('checkInputs', {
         name: this.username,
         password: this.pwd
-      });
+      })
     }
   },
   computed: {
     errorMessage() {
-      return this.$store.getters["getError"];
+      return this.$store.getters['getError']
     },
     loading() {
-      return this.$store.getters["isLoading"];
+      return this.$store.getters['isLoading']
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
-@import "~bulma-divider";
+@import '~bulma-divider';
 
 .bucketed {
   background: #f3f3f3;

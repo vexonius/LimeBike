@@ -1,48 +1,48 @@
-const fs = require("fs");
-const path = require("path");
-const Sequelize = require("sequelize");
-const basename = path.basename(module.filename);
-const config = require("./../config/config").development;
+const fs = require('fs')
+const path = require('path')
+const Sequelize = require('sequelize')
+const basename = path.basename(module.filename)
+const config = require('./../config/config').development
 
-var db = {};
+var db = {}
 
-let sequelize = new Sequelize(config);
+let sequelize = new Sequelize(config)
 
 fs.readdirSync(__dirname)
   .filter(
     file =>
-      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
+      file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
   )
   .forEach(file => {
-    const model = sequelize.import(path.join(__dirname, file));
-    db[model.name] = model;
-  });
+    const model = sequelize.import(path.join(__dirname, file))
+    db[model.name] = model
+  })
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
-    db[modelName].associate(db);
+    db[modelName].associate(db)
   }
-});
+})
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+db.sequelize = sequelize
+db.Sequelize = Sequelize
 
 Promise.all([
   db.user.sync(),
   db.bicycle.sync(),
   db.transaction.sync(),
-  db.transactionItem.sync()
+  db.transactionItem.sync(),
 ])
   .then(() => {
-    console.log("All tables created successfully");
+    console.log('All tables created successfully')
   })
-  .catch(err => console.log("Something went wrong: " + err));
+  .catch(err => console.log('Something went wrong: ' + err))
 
 sequelize
   .authenticate()
   .then(() => {
-    console.log("Connection has been established successfully.");
+    console.log('Connection has been established successfully.')
   })
-  .catch(err => console.error("Unable to connect to the database:", err));
+  .catch(err => console.error('Unable to connect to the database:', err))
 
-module.exports = db;
+module.exports = db

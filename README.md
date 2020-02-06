@@ -16,6 +16,11 @@ npm install
 npm run boot-server
 ```
 
+### Seeds the database with bikes data 
+```
+npm run seed
+```
+
 ### Compiles and hot-reloads for development (FRONTEND)
 ```
 npm run serve

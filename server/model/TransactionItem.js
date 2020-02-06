@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const TransactionItem = sequelize.define(
-    "transactionItem",
+    'transactionItem',
     {
       id: {
         type: DataTypes.UUID,
@@ -18,21 +18,21 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     {
-      modelName: "transactionItem",
+      modelName: 'transactionItem',
       timestamps: true
     }
-  );
+  )
 
   TransactionItem.associate = function(models) {
     TransactionItem.belongsTo(models.transaction, {
-      foreignKey: "transactionId",
-      as: "item"
-    });
+      foreignKey: 'transactionId',
+      as: 'item'
+    })
     TransactionItem.belongsTo(models.bicycle, {
-      foreignKey: "bicycleId",
-      as: "bicycle"
-    });
-  };
+      foreignKey: 'bicycleId',
+      as: 'bicycle'
+    })
+  }
 
-  return TransactionItem;
-};
+  return TransactionItem
+}

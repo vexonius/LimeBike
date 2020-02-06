@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: "CartItem",
+  name: 'CartItem',
   props: {
     product: {
       type: Object,
@@ -47,19 +47,19 @@ export default {
   },
   computed: {
     name() {
-      return this.data;
+      return this.data
     }
   },
   methods: {
     addOneMore() {
-      this.$store.dispatch("addOneMore", this.index);
+      this.$store.dispatch('addOneMore', this.index)
     },
     removeOne() {
-      console.log(this.index);
-      this.$store.dispatch("removeOne", this.index);
+      console.log(this.index)
+      this.$store.dispatch('removeOne', this.index)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

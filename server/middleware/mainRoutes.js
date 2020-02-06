@@ -1,9 +1,8 @@
-module.exports = (app) => {
-  const controller = require('./../controllers/controller');
+module.exports = app => {
+  const controller = require('./../controllers/controller')
 
-  app.post("/register", controller.register);
-  app.post("/login", controller.login);
+  app.post('/register', controller.register)
+  app.post('/login', controller.login)
 
-  app.get("/products", controller.getAllProducts);
-
-};
+  app.get('/products', controller.getAllProducts)
+}

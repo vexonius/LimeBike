@@ -1,104 +1,98 @@
-
-
 const state = {
-    items: [],
-    total: 0
+  items: [],
+  total: 0
 }
 
 const getters = {
-    getItemsInCart(state){
-        return state.items;
-    },
-    
-    getItemsCount(state){
-        if(state.items.length == 0) return 0;
+  getItemsInCart(state) {
+    return state.items
+  },
 
-        let num = state.items.reduce((count, item) => {
-            return count + parseInt(item.amount);
-        }, 0);
+  getItemsCount(state) {
+    if (state.items.length == 0) return 0
 
-        return num;
-    },
+    let num = state.items.reduce((count, item) => {
+      return count + parseInt(item.amount)
+    }, 0)
 
-    getTotal(state){
-        if(state.items.length == 0) return parseFloat(0).toFixed(2);
+    return num
+  },
 
-        let total = state.items.reduce((count, item) => {
-            return count + item.amount * parseFloat(item.item.price);
-        }, 0);
+  getTotal(state) {
+    if (state.items.length == 0) return parseFloat(0).toFixed(2)
 
-        return parseFloat(total).toFixed(2);
-    },
+    let total = state.items.reduce((count, item) => {
+      return count + item.amount * parseFloat(item.item.price)
+    }, 0)
 
-    getTransactionData(state, getters){
-        let data = {
-            total: getters.getTotal,
-            userId: getters.getUser.id,
-            items: []
-        }
+    return parseFloat(total).toFixed(2)
+  },
 
-         let itms = state.items.map(itm => {
-            let newItem = {amount: itm.amount, bicycleId: itm.item.serialNumber}
-            return newItem;
-         })
-
-         data.items = itms;
-         console.log(data);
-
-         return data;
+  getTransactionData(state, getters) {
+    let data = {
+      total: getters.getTotal,
+      userId: getters.getUser.id,
+      items: []
     }
+
+    let itms = state.items.map(itm => {
+      let newItem = { amount: itm.amount, bicycleId: itm.item.serialNumber }
+      return newItem
+    })
+
+    data.items = itms
+    console.log(data)
+
+    return data
+  }
 }
 
 const actions = {
-    addItemToCart(context, item){
-        context.commit("addItem", {item: item, amount: 1});
-    },
+  addItemToCart(context, item) {
+    context.commit('addItem', { item: item, amount: 1 })
+  },
 
-    addOneMore(context, index){
-        context.commit("increaseByOne", index);
-    },
+  addOneMore(context, index) {
+    context.commit('increaseByOne', index)
+  },
 
-    removeOne(context, index){
-        context.commit("decreaseByOne", index);
-    },
+  removeOne(context, index) {
+    context.commit('decreaseByOne', index)
+  },
 
-    clearCart(context){
-        context.commit("clearCart");
-    }
-
-
+  clearCart(context) {
+    context.commit('clearCart')
+  }
 }
 
 const mutations = {
-    addItem(state, val){
-        let exists = state.items.filter( item => {
-            return item.item.serialNumber == val.item.serialNumber;
-        });
+  addItem(state, val) {
+    let exists = state.items.filter(item => {
+      return item.item.serialNumber == val.item.serialNumber
+    })
 
-        if(exists.length == 0)
-            return state.items.push(val);
+    if (exists.length == 0) return state.items.push(val)
 
-        return exists[0].amount++;
-    },
-    increaseByOne(state, index){
-        state.items[index].amount++;
-    },
-    decreaseByOne(state, index){
-        console.log(index);
-        state.items[index].amount--;
+    return exists[0].amount++
+  },
+  increaseByOne(state, index) {
+    state.items[index].amount++
+  },
+  decreaseByOne(state, index) {
+    console.log(index)
+    state.items[index].amount--
 
-        if(state.items[index].amount==0)
-            state.items.splice(index, 1);
-    },
-    clearCart(state){
-        state.items = [];
-        state.total = 0;
-    }
+    if (state.items[index].amount == 0) state.items.splice(index, 1)
+  },
+  clearCart(state) {
+    state.items = []
+    state.total = 0
+  }
 }
 
 export default {
-    state,
-    getters,
-    actions,
-    mutations
+  state,
+  getters,
+  actions,
+  mutations
 }
