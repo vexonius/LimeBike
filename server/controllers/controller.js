@@ -33,8 +33,8 @@ module.exports = {
     db.user
       .findOne({
         where: {
-          [db.Sequelize.Op.or]: [{ username: username }, { email: email }],
-        },
+          [db.Sequelize.Op.or]: [{ username: username }, { email: email }]
+        }
       })
       .then(user => {
         if (user) {
@@ -50,12 +50,12 @@ module.exports = {
                   password: hash,
                   firstName: firstName,
                   lastName: lastName,
-                  email: email,
+                  email: email
                 })
                 .then(user =>
                   res.status(200).json({
                     message: 'Successful creation of user',
-                    user: user,
+                    user: user
                   })
                 )
             )
@@ -64,11 +64,11 @@ module.exports = {
 
               if (err.errors[0].path == 'email')
                 return res.status(400).json({
-                  message: 'Please enter a valid email and try again',
+                  message: 'Please enter a valid email and try again'
                 })
 
               return res.status(500).json({
-                message: 'Something went wrong, please try again later.',
+                message: 'Something went wrong, please try again later.'
               })
             })
         }
@@ -83,5 +83,5 @@ module.exports = {
         console.error(err)
         return res.status(500).json({ message: 'Something went wrong' })
       })
-  },
+  }
 }

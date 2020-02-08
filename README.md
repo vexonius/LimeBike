@@ -6,9 +6,25 @@ Frontend je u /src, a backend u /server folderu. Korištene tehnologije: Vuejs (
 # Overview
 ![](lime_bike_demo.gif)
 
+# Setup
+
 ## Project setup and dependency installation
 ```
 npm install
+```
+
+## Database setup
+To successfully connect with a postgres server, you have to declare these .env variables. Create an empty .env file in /server folder and add values to these variables (you do not need to use "" for strings)
+```
+PORT=
+
+DB_NAME=
+DB_USER=
+DB_PASS=
+DB_HOST=
+DB_DIALECT=
+
+JWT_SECRET=
 ```
 
 ### Compiles and boots server 
@@ -25,6 +41,7 @@ npm run seed
 ```
 npm run serve
 ```
+
 
 ### Compiles and minifies for production
 ```
