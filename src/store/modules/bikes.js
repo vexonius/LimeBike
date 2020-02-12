@@ -24,7 +24,6 @@ const actions = {
   fetchProducts(context) {
     Repository.fetchAllProducts()
       .then(res => {
-        console.log(res)
         context.commit('updateProducts', res.data)
       })
       .catch(err => console.error(err))

@@ -17,17 +17,26 @@
                       :product="item"
                       :index="index"
                     />
-                    <p class="title is-4 has-text-right has-margin-10">${{total}}</p>
+                    <p class="title is-4 has-text-right has-margin-10">
+                      ${{ total }}
+                    </p>
                     <div class="divider"></div>
                   </div>
                 </div>
               </b-step-item>
-              <b-step-item label="Additional info" :clickable="true" :is-active="nextStep">
+              <b-step-item
+                label="Additional info"
+                :clickable="true"
+                :is-active="nextStep"
+              >
                 <div class="section max-width-800">
                   <Linput v-model="entered.address" placeholder="Address" />
                   <div class="columns">
                     <div class="column">
-                      <Linput v-model="entered.cityNumber" placeholder="City number" />
+                      <Linput
+                        v-model="entered.cityNumber"
+                        placeholder="City number"
+                      />
                     </div>
                     <div class="column">
                       <Linput v-model="entered.city" placeholder="City" />
@@ -42,18 +51,18 @@
                 <div class="section max-width-800">
                   <div class="columns">
                     <div class="column section">
-                      <p
-                        class="title is-4 is-dark is-spaced"
-                      >Please double check entered information</p>
+                      <p class="title is-4 is-dark is-spaced">
+                        Please double check entered information
+                      </p>
                       <b-notification class="has-text-dark" :closable="false">
                         <p class="subtitle is-5">
-                          {{user.firstName}} {{user.lastName}}
+                          {{ user.firstName }} {{ user.lastName }}
                           <br />
-                          {{entered.address}}
+                          {{ entered.address }}
                           <br />
-                          {{entered.cityNumber}} {{entered.city}}
+                          {{ entered.cityNumber }} {{ entered.city }}
                           <br />
-                          {{entered.country}}
+                          {{ entered.country }}
                         </p>
                       </b-notification>
                       <h1 class="title is-4">Payment option</h1>
@@ -110,7 +119,6 @@ export default {
       setTimeout(() => {
         this.loading = false
         this.disabled = false
-        console.log(this.transactionData)
         this.$store.dispatch('createNewTransaction', this.transactionData)
       }, 500)
     }

@@ -41,7 +41,6 @@ const getters = {
     })
 
     data.items = itms
-    console.log(data)
 
     return data
   }
@@ -79,7 +78,6 @@ const mutations = {
     state.items[index].amount++
   },
   decreaseByOne(state, index) {
-    console.log(index)
     state.items[index].amount--
 
     if (state.items[index].amount == 0) state.items.splice(index, 1)

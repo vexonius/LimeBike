@@ -30,7 +30,6 @@ const actions = {
   loginUser(context, user) {
     Repository.login(user)
       .then(response => {
-        console.log(response)
         context.dispatch('saveToken', response.data.token)
         context.commit('setUserLoggedIn', true)
         context.dispatch('setLoading', false)
@@ -38,7 +37,7 @@ const actions = {
         router.push('home')
       })
       .catch(err => {
-        console.log(err.response)
+        console.error(err.response)
         context.dispatch('setLoading', false)
         context.commit('pushError', err.response.data)
       })
@@ -61,12 +60,11 @@ const actions = {
     ) {
       Repository.register(user)
         .then(response => {
-          console.log(response)
           context.commit('saveUserInfo', response.data.user)
           router.push('login')
         })
         .catch(err => {
-          console.log(err.response)
+          console.error(err.response)
           context.commit('pushError', err.response.data)
         })
     } else {
@@ -110,24 +108,20 @@ const actions = {
       headers: { Authorization: 'Bearer ' + token }
     }
 
-    console.log(config)
-
     return config
   },
 
   createNewTransaction(context, tdata) {
-    console.log(tdata)
     context.dispatch('getAuthToken').then(config => {
       Repository.createNewTransaction(tdata, config)
         .then(response => {
-          console.log(response)
           context.dispatch('clearCart')
           router.push({
             name: 'confirmation',
             params: { id: response.data.id }
           })
         })
-        .catch(err => console.log(err))
+        .catch(err => console.error(err))
     })
   }
 }

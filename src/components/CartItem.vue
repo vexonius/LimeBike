@@ -55,7 +55,6 @@ export default {
       this.$store.dispatch('addOneMore', this.index)
     },
     removeOne() {
-      console.log(this.index)
       this.$store.dispatch('removeOne', this.index)
     }
   }

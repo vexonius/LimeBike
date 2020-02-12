@@ -77,7 +77,6 @@ $colors: (
   )
 );
 
-// Links
 $link: $primary;
 
 @import '~bulma';

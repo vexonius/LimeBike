@@ -1,4 +1,3 @@
-'use strict'
 const uuidv4 = require('uuid/v4')
 
 module.exports = {
@@ -96,6 +95,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('bicycle', null, {})
+    return queryInterface.bulkDelete('bicycles')
   }
 }

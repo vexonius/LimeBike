@@ -6,7 +6,12 @@
           <div class="box">
             <div class="columns has-text-centered has-margin-10">
               <div class="column">
-                <b-message v-show="errorMessage" title="Error" type="is-danger">{{errorMessage}}</b-message>
+                <b-message
+                  v-show="errorMessage"
+                  title="Error"
+                  type="is-danger"
+                  >{{ errorMessage }}</b-message
+                >
                 <figure class="image is-64x64 has-image-centered">
                   <img class="is" src="./../assets/bikelogo.png" />
                 </figure>
@@ -25,9 +30,17 @@
             <Linput placeholder="Email" v-model="user.email" />
             <Linput placeholder="Username" v-model="user.username" />
 
-            <Linput placeholder="Password" :hide="true" v-model="user.password" />
+            <Linput
+              placeholder="Password"
+              :hide="true"
+              v-model="user.password"
+            />
 
-            <Linput placeholder="Repeat Password" :hide="true" v-model="user.passwordrep" />
+            <Linput
+              placeholder="Repeat Password"
+              :hide="true"
+              v-model="user.passwordrep"
+            />
 
             <div class="columns has-margin-10">
               <div class="column">
@@ -37,7 +50,8 @@
                   v-bind:loading="loading"
                   @click="registerUser()"
                   rounded
-                >Register</b-button>
+                  >Register</b-button
+                >
               </div>
             </div>
             <div class="is-divider" data-content="OR"></div>

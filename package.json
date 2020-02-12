@@ -7,7 +7,8 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "boot-server": "nodemon server/server",
-    "seed": "sequelize-cli db:seed:all"
+    "seed": "cd ./server && sequelize-cli db:seed:all",
+    "unseed": "cd ./server && sequelize-cli db:seed:undo:all"
   },
   "dependencies": {
     "apexcharts": "^3.8.4",

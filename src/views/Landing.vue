@@ -13,7 +13,8 @@
             @click="routeToHome()"
             rounded
             outlined
-          >Rent LimeBike</b-button>
+            >Rent LimeBike</b-button
+          >
 
           <figure class="video">
             <video playsinline autoplay muted loop>

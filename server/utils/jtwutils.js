@@ -10,8 +10,6 @@ jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken()
 jwtOptions.secretOrKey = process.env.JWT_SECRET
 
 let strategy = new JwtStrategy(jwtOptions, function(jwt_payload, next) {
-  console.log('payload received', jwt_payload)
-
   db.user.findOne({ where: { id: jwt_payload.id } }).then(user => {
     if (user) {
       next(null, user)

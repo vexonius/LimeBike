@@ -4,11 +4,13 @@
       <div class="column is-one-quarter">
         <div class="card dark fixed">
           <div class="card-content has-padding-40">
-            <p class="subtitle light">{{filterBy}}</p>
+            <p class="subtitle light">{{ filterBy }}</p>
             <div class="field">
-              <div v-for="(filter, key) in activeFilters" 
-              :key="key" 
-              class="field">
+              <div
+                v-for="(filter, key) in activeFilters"
+                :key="key"
+                class="field"
+              >
                 <b-checkbox class="light" v-model="filter.value">
                   {{ filter.name }}
                 </b-checkbox>
@@ -103,5 +105,3 @@ export default {
   padding-bottom: 40px;
 }
 </style>
-
-

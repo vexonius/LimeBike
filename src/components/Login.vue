@@ -6,11 +6,8 @@
           <div class="box">
             <div class="columns has-text-centered has-margin-10">
               <div class="column">
-                <b-message 
-                  v-show="errorMessage" 
-                  title="Error" 
-                  type="is-danger">
-                  {{errorMessage}}
+                <b-message v-show="errorMessage" title="Error" type="is-danger">
+                  {{ errorMessage }}
                 </b-message>
                 <figure class="image is-64x64 has-image-centered">
                   <img class="is" src="./../assets/bikelogo.png" />
@@ -28,11 +25,15 @@
                   v-bind:loading="loading"
                   @click="checkInputs()"
                   rounded
-                >Log in</b-button>
+                  >Log in</b-button
+                >
               </div>
             </div>
             <div class="is-divider" data-content="OR"></div>
-            <div class="column has-text-centered clickable" @click="routeToRegister()">
+            <div
+              class="column has-text-centered clickable"
+              @click="routeToRegister()"
+            >
               <p class="subtitle is-6">
                 Don't have an account?
                 <strong>Sign up</strong>
