@@ -22,7 +22,6 @@ export default {
     return axios.get(`${BASE_URL}/users/${id}/transactions`, config)
   },
   createNewTransaction(data, config) {
-    console.log(data)
     return axios.post(
       `${BASE_URL}/users/${data.userId}/transactions`, data, config)
   },

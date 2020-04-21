@@ -60,7 +60,7 @@ module.exports = {
                 )
             )
             .catch(err => {
-              console.log(err)
+              console.error(err)
 
               if (err.errors[0].path == 'email')
                 return res.status(400).json({

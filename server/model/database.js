@@ -36,7 +36,7 @@ Promise.all([
   .then(() => {
     console.log('All tables created successfully')
   })
-  .catch(err => console.log('Something went wrong: ' + err))
+  .catch(err => console.error('Something went wrong: ' + err))
 
 sequelize
   .authenticate()

@@ -19,7 +19,6 @@ module.exports = {
     db.user
       .update(user, { where: { id: req.params.id }, returning: true })
       .then(obj => {
-        console.log('success updating user ' + user.id)
         return res.status(200).json(obj)
       })
       .catch(err => {
