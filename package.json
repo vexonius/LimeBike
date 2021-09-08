@@ -11,7 +11,7 @@
     "unseed": "cd ./server && sequelize-cli db:seed:undo:all"
   },
   "dependencies": {
-    "apexcharts": "^3.8.4",
+    "apexcharts": "^3.24.0",
     "axios": "^0.19.0",
     "bcrypt": "^5.0.0",
     "buefy": "^0.8.2",
